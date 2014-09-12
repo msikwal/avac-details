@@ -1,0 +1,29 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Vac Details </h3>
+	</div>
+	<div class="panel-body">
+			{{#each this}}
+			<div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#{{@key}}">
+		          Details For BirthDate {{@key}}
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="{{@key}}" class="panel-collapse collapse">
+		      	<div class="row" style="margin:0px;">
+		        {{#each this}}
+    				<ul class="col-xs-6 " style="height:80px;list-style:none;font-size:12px;">
+    					<li>{{this.id}}</li>
+    					<li>{{this.start_date}}</li>
+    					<li>{{this.vac_name}}</li>
+    				</ul>
+    			{{/each}}
+    			</div>
+		    </div>
+		  	</div>
+			{{/each}}
+	</div>
+</div>

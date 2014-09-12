@@ -1,0 +1,38 @@
+<div class="page_title">User Information</div>
+<div class="js_user_details" ng-controller="UserCtrl">
+	<form class="form-horizontal" role="form" name="user_frm" id="user_frm">
+		<div class="form-group">
+			<div class="col-sm-5">
+				<input type="text"  class="form-control" id="fName" ng-model="user.first_name" name="fName" placeholder="Enter First Name" required >
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-5">
+				<input type="text"  class="form-control " id="lName" ng-model="user.last_name" name="lName" placeholder="Enter Last Name" required>
+			</div>
+		</div>
+		<!--<div class="form-group">
+					<label for="m_name" class="col-sm-4 control-label">Mobile</label>
+					<div class="col-sm-5">
+						<input type="tel" value="{{mobile}}" pattern="[0-9]{10,10}" class="form-control " id="mobile_num" name="mobile_num" placeholder="9833-0000-00" autocomplete="off"  maxlength="10" required>
+					</div>
+		</div> -->
+		<div class="form-group">
+			<div class="col-sm-5">
+				<input type="email" value="" class="form-control " id="uEmail" ng-model="user.email" name="uEmail" placeholder="Enter Email" >
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-5">
+				<textarea class="form-control " id="uAddress" ng-model="user.address" name="uAddress" cols="3" rows="2"></textarea>
+			</div>
+		</div>
+		<input type="hidden" name="Uid" id="Uid" value="{{user.user_id}}">
+		<div class="form-group">
+			<div class="js-submit-btn col-sm-offset-4 col-sm-5 ">
+				<button ng-click="reset()" ng-disabled="isUnchanged(user)" class="btn btn-primary btn-block ">RESET</button>
+    			<button ng-click="update(user)" ng-disabled="user_frm.$invalid || isUnchanged(user)" class="btn btn-primary btn-block ">SAVE</button>
+			</div>
+		</div>
+	</form>
+</div>

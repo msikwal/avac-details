@@ -1,0 +1,56 @@
+<div class="page_title">Doctor Information</div>
+<div class="js_doc_details" ng-controller="DoctorCtrl">
+	<form class="form-horizontal" role="form" name="doc_frm" id="doc_frm">
+		<div class="form-group">
+			<div class="col-sm-5">
+				<input type="text" class="form-control" id="f_name" ng-model="doctor.first_name" name="f_name" placeholder="Enter First Name" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-5">
+				<input type="text" class="form-control "
+					id="l_name"  ng-model="doctor.last_name" name="l_name" placeholder="Enter Last Name" required>
+			</div>
+		</div>
+		<!-- <div class="form-group">
+			<label for="m_name" class="col-sm-4 control-label"></label>
+			<div class="col-sm-5">
+				<div class="input-group"><span class="input-group-addon">@</span><input type="text" class="form-control" placeholder="Username"></div>
+			</div>
+		</div> -->
+		<!-- <div class="form-group">
+					<label for="m_name" class="col-sm-4 control-label">Mobile</label>
+					<div class="col-sm-5">
+						<input type="tel" value="{{mobile}}" pattern="[0-9]{10,10}" class="form-control " id="mobile_num" name="mobile_num" placeholder="9833-0000-00" autocomplete="off"  maxlength="10" required>
+					</div>
+				</div> -->
+		<div class="form-group">
+			<div class="col-sm-5">
+				<input type="email" class="form-control "
+					id="doc_email" ng-model="doctor.email" name="doc_email" placeholder="Enter Email">
+			</div>
+		</div>
+		<!-- <div class="form-group">
+					<label for="m_name" class="col-sm-4 control-label">Address</label>
+					<div class="col-sm-5">
+						<textarea class="form-control " id="doc_address" name="doc_address" cols="3" rows="2"></textarea>
+					</div>
+				</div> -->
+		<div class="form-group">
+			<div class="col-sm-5">
+				<textarea class="form-control " id="wel_msg" name="wel_msg" cols="3" placeholder="Enter text message"
+					rows="2" ng-model="doctor.wel_msg"></textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="js-submit-btn col-sm-offset-4 col-sm-5 ">
+				<button ng-click="reset()" ng-disabled="isUnchanged(doctor)" class="btn btn-primary btn-block ">RESET</button>
+    			<button ng-click="update(doctor)" ng-disabled="doc_frm.$invalid || isUnchanged(doctor)" class="btn btn-primary btn-block ">SAVE</button>
+			</div>
+		</div>
+		<input type="hidden" name="doc_id" ng-model="doctor.doc_id" id="doc_id" value="{{doc_id}}">
+		<input type="hidden"  ng-model="doctor.mobile_num" id="mobile_num"
+			name="mobile_num">
+	</form>
+</div>
