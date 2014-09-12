@@ -150,21 +150,29 @@ angular.module('vacService', [])
       /*  set options for request, set success and fail callbacks */
       var successCallback = opt.successCallback,
       method = opt.method || 'POST',
-      //contentType = opt.contentType || 'application/x-www-form-urlencoded',
+      contentType = opt.contentType || 'application/x-www-form-urlencoded',
       name = opt.name,
       action = opt.action,
       pathTemplate = paths[name],
-      userData = opt.data,
+      ObjecttoParams  = function (obj) {
+  	    var p = [];
+  	    for (var key in obj) {
+  	        p.push(key + '=' + obj[key]);
+  	    }
+  	    return p.join('&');
+    },
+      userData = ObjecttoParams(opt.data),
       httpOpt = {
-        method: method,
+        method : method,
         url: pathTemplate+'?mode='+action,
-        data: userData
-        //headers: {'Content-Type': contentType},
+        data: userData,
+        headers: {'Content-Type': contentType}
       },
       defaultFailCallback = function (data, status) {
         successCallback(status);
         return data;
       },
+      
       tokenFailCallback = function (data, status, headers) {
         // for debugging requests
         console.error('status:', status);
@@ -193,7 +201,6 @@ angular.module('vacService', [])
       /*if (typeof token === 'string') {
         httpOpt.headers['X-Authentication-Token'] = token;
       }*/
-      console.log(httpOpt);
       /* make the request */
       var promise = $http(httpOpt);
       if (successCallback) { promise.success(successCallback); }
@@ -205,6 +212,9 @@ angular.module('vacService', [])
       getUserDetails: function (opt) {
     		httpGet({name: 'user', parm: opt.mobile, callback: opt.callback});
       },
+      getDocDetails: function (opt) {
+  		httpGet({name: 'doctor', parm: opt.mobile, callback: opt.callback});
+    },
       saveUserDetails: function (opt) {
         httpPostOrPut({name: 'user', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data});
       },
@@ -212,8 +222,21 @@ angular.module('vacService', [])
           httpPostOrPut({name: 'doctor', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data});
       },
       userLogin: function (opt) {
-          httpPostOrPut({name: 'login', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data});
+          httpPostOrPut({name: 'login', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data });
       }
     };
-  });
+  }).service('Session', function () {
+	  this.create = function (sessionId, userId, userRole) {
+		    this.id = sessionId;
+		    this.userId = userId;
+		    this.userRole = userRole;
+		  };
+		  this.destroy = function () {
+		    this.id = null;
+		    this.userId = null;
+		    this.userRole = null;
+		  };
+		  return this;
+		});
+  
     

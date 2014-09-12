@@ -8,20 +8,17 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-  .controller('DoctorCtrl', function ($scope,VacService) {
+  .controller('DoctorCtrl', function ($scope,VacService,$route) {
 	$('#wrapper').removeClass('toggled');
-	var handleSuccessCall = function (rowdata){
-		//$scope.userDetails  = rowdata.data[0];
-		var dataVal = rowdata.data[0];
-		console.log(dataVal);
+	var handleDocSuccessCall = function (rowdata){
+		console.log(rowdata);
 	};
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
-		var dataVal = rowdata.data[0];
-		console.log(dataVal);
+		//var dataVal = rowdata.data[0];
+		console.log(rowdata);
 	};
 	$scope.master = {};
-
     $scope.update = function(doctor) {
       $scope.master = angular.copy(doctor);
       console.log($scope.master);
@@ -32,10 +29,7 @@ angular.module('avacDetailsApp')
 			data : $scope.master,
 			method : 'POST'
 	  });
-      /*VacService.getUserDetails({
-			callback: handleSuccessCall,
-			mobile: '?mobile=2222222222'
-		});*/
+      
     };
 
     $scope.reset = function() {
@@ -47,4 +41,8 @@ angular.module('avacDetailsApp')
     };
 
     $scope.reset();
+    VacService.getDocDetails({
+    	callback: handleDocSuccessCall,
+    	mobile: '?mobile='+$route.current.params.mobile
+	});
   });

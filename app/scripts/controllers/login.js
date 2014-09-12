@@ -8,16 +8,34 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-.controller('LoginCtrl', function ($scope,VacService) {
+.controller('LoginCtrl', function ($scope,VacService,Session,$location) {
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
-		var dataVal = rowdata.data[0];
-		console.log(dataVal);
+		var userRole;
+		var token = new Date().getTime() * rowdata.status.group_id * 100;
+		if(rowdata.status==1){
+			userRole = 'doctor';
+			$location.search('mobile',$scope.master.mobile_num).path('/doctor');
+		}else if(rowdata.status ==2){
+			userRole = 'reguser';
+			$location.search('mobile',$scope.master.mobile_num).path('/user');
+		}
+		$scope.userRoles = userRole;
+		Session.create(token,$scope.master.mobile_num,userRole);
 	};
+	/*var isAuthenticated = function () {
+	    return !!Session.userId;
+	};
+	var isAuthorized = function (authorizedRoles) {
+	    if (!angular.isArray(authorizedRoles)) {
+	      authorizedRoles = [authorizedRoles];
+	    }
+	    return (authService.isAuthenticated() &&
+	      authorizedRoles.indexOf(Session.userRole) !== -1);
+	};*/
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
-		var dataVal = rowdata.data[0];
-		console.log(dataVal);
+		console.log(rowdata);
 	};
 	$scope.master = {};
     $scope.login = function(user) {
