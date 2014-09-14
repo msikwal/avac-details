@@ -27,25 +27,19 @@
 			<span class="col-xs-9">My Vaccination</span>
 		</div>
 		<div id="wrapper">
-			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
 					<!--li class="sidebar-brand"><a ng-href="#">Home</a></li>-->
-					<li><a ng-href="#" class="active">Home</a></li>
-					<li><a ng-href="#/doctor">Doctor</a></li>
-					<li><a ng-href="#/child">Child Details</a></li>
-					<li><a ng-href="#/vac">Vac Details</a></li>
-					<li><a ng-href="#/user">User</a></li>
+					<li class=''><a ng-href="#/doctor">Doctor</a></li>
+					<li class=''><a ng-href="#/user">User</a></li>
+					<li class=''><a ng-href="#/">Login</a></li>
+					<li class=''><a ng-href="#/register">Register</a></li>
+					<li class='hide'><a ng-href="#/logout">Logout</a></li>
 				</ul>
 			</div>
 			
-			<!-- /#sidebar-wrapper -->
 			<div id="page-content-wrapper">
-				<!-- Page Content -->
 				<div ng-view=""></div>
-				<!-- /#page-content-wrapper -->
-				
-				<!-- Menu Toggle Script -->
 				<div class="footer">
 					<p>
 						<span class="glyphicon glyphicon-heart"></span>msikwal
@@ -87,8 +81,9 @@
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
-	<script src="scripts/vac-service.js"></script>
+	
 	<script src="scripts/app.js"></script>
+	<script src="scripts/vac-service.js"></script>
 	<script src="scripts/controllers/main.js"></script>
 	<script src="scripts/controllers/about.js"></script>
 	<script src="scripts/controllers/user.js"></script>

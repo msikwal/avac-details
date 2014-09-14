@@ -1,6 +1,7 @@
 <div class="page_title">Doctor Information</div>
 <div class="js_doc_details" ng-controller="DoctorCtrl">
 	<form class="form-horizontal" role="form" name="doc_frm" id="doc_frm">
+		<div class="col-sm-5" ng-show="updateSuccess===1 || isUnchanged(doctor)">Update Successfully.</div>
 		<div class="form-group">
 			<div class="col-sm-5">
 				<input type="text" class="form-control" id="f_name" ng-model="doctor.first_name" name="f_name" placeholder="Enter First Name" required>
@@ -39,13 +40,12 @@
 		<div class="form-group">
 			<div class="col-sm-5">
 				<textarea class="form-control " id="wel_msg" name="wel_msg" cols="3" placeholder="Enter text message"
-					rows="2" ng-model="doctor.wel_msg"></textarea>
+					rows="2" ng-model="doctor.text_msg" required></textarea>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="js-submit-btn col-sm-offset-4 col-sm-5 ">
-				<button ng-click="reset()" ng-disabled="isUnchanged(doctor)" class="btn btn-primary btn-block ">RESET</button>
     			<button ng-click="update(doctor)" ng-disabled="doc_frm.$invalid || isUnchanged(doctor)" class="btn btn-primary btn-block ">SAVE</button>
 			</div>
 		</div>
@@ -53,9 +53,4 @@
 		<input type="hidden"  ng-model="doctor.mobile_num" id="mobile_num"
 			name="mobile_num">
 	</form>
-	 <pre>$location.path() = {{userRoles}}</pre>
-    <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
-    <pre>$route.current.params = {{$route.current.params}}</pre>
-    <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
-    <pre>$routeParams = {{$routeParams}}</pre>
 </div>

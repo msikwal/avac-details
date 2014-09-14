@@ -237,6 +237,14 @@ angular.module('vacService', [])
 		    this.userRole = null;
 		  };
 		  return this;
-		});
+		}).factory('AuthenticationService', function() {
+		    var auth = {
+		            isAuthenticated: false,
+		            isAdmin: false,
+		            isUser : false,
+		            isDoc : false
+		        };
+		        return auth;
+		    });
   
     

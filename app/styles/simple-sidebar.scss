@@ -148,3 +148,10 @@
 .form-horizontal input.ng-valid.ng-dirty {
     background-color: #78FA89;
 }
+.form-horizontal textarea.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+  }
+
+.form-horizontal textarea.ng-valid.ng-dirty {
+    background-color: #78FA89;
+}
