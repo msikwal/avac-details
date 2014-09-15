@@ -27,7 +27,7 @@ angular.module('avacDetailsApp')
 	
     $scope.update = function(doctor) {
       $scope.master = angular.copy(doctor);
-      //console.log($scope.master);
+      console.log($scope.master);
       VacService.saveDocDetails({ 
 			success: handleDocUpdateSuccess,
 			fail : handleFailCall,

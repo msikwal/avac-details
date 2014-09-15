@@ -11,7 +11,6 @@ angular.module('avacDetailsApp')
   .controller('ChildCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
 	$scope.updateSuccess ="0";
 	var handleSuccessCall = function (rowdata){
-		//$scope.userDetails  = rowdata.data[0];
 		$scope.child = rowdata.data[0];
 		console.log($scope.child);
 	};
@@ -28,13 +27,13 @@ angular.module('avacDetailsApp')
     	  child.docId = Session.userId;
     	  $scope.master = angular.copy(child);
     	  console.log($scope.master);
-    	  /*VacService.saveChildVacDetails({ 
+    	  VacService.saveChildVacDetails({ 
 				success: handleUpdateSuccessCall,
 				fail : handleFailCall,
-				action : 'update',
+				action : 'save',
 				data : $scope.master,
 				method : 'POST'
-	  	});*/
+	  	});
       }else{
     	  $location.path('/login');
       }	  
