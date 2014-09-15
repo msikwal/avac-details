@@ -13,23 +13,19 @@ angular.module('avacDetailsApp')
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
 		var userRole;
-		var token = new Date().getTime() * rowdata.status.group_id * 100;
-		console.log(token);
+		var token = new Date().getTime() * rowdata.status * 100;
 		if(rowdata.status==1){
 			userRole = 'doctor';
 			AuthenticationService.isAuthenticated =true;
-			//AuthenticationService.isDoc =true;
 			$location.path('/doctor');
 		}else if(rowdata.status ==2){
 			AuthenticationService.isAuthenticated =true;
 			userRole = 'reguser';
 			$location.path('/user');
 		}
-		$scope.userRoles = userRole;
 		Session.create(token,$scope.master.mobile_num,userRole);
 	};
 	var handleFailCall = function (rowdata){
-		//$scope.userDetails  = rowdata.data[0];
 		console.log(rowdata);
 	};
 	$scope.master = {};
@@ -58,6 +54,7 @@ angular.module('avacDetailsApp')
 	AuthenticationService.isDoc =false;
 	$('.sidebar-nav li').removeClass('hide');
 	$('.sidebar-nav li').eq(4).addClass('hide');
+	$('.sidebar-nav li').eq(5).addClass('hide');
 	$location.path('/');
 });
 

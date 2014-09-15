@@ -29,7 +29,7 @@ app.constant('AUTH_EVENTS', {
                         	   $routeProvider
                         	   .when('/', {
                         		   templateUrl: 'views/user_launch.html',
-                        		   controller: 'AboutCtrl'
+                        		   controller: 'LoginCtrl'
                         	   })
                         	   .when('/doctor', {
 								    templateUrl: 'views/doctor.html',
@@ -63,6 +63,10 @@ app.constant('AUTH_EVENTS', {
                         		   templateUrl: 'views/login.html',
                         		   controller: 'LoginOutCtrl'
                         	   })
+                        	   .when('/dashboard', {
+                        		   templateUrl: 'views/dashboard.html',
+                        		   controller: 'DashboardCtrl'
+                        	   })
                         	   .otherwise({
                         		   redirectTo: '/'
                         	   });
@@ -70,7 +74,7 @@ app.constant('AUTH_EVENTS', {
 
 app.run(function($rootScope, $location, $window, AuthenticationService) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
-    		console.log(currentRoute,AuthenticationService,nextRoute);
+    		//console.log(currentRoute,AuthenticationService,nextRoute);
     	    if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication 
     	            && !AuthenticationService.isAuthenticated) {
     	            $location.path("/login");
@@ -79,11 +83,13 @@ app.run(function($rootScope, $location, $window, AuthenticationService) {
     	    	$('.sidebar-nav li').eq(2).addClass('hide');
     	    	$('.sidebar-nav li').eq(3).addClass('hide');
     	    	$('.sidebar-nav li').eq(4).removeClass('hide');
+    	    	$('.sidebar-nav li').eq(5).removeClass('hide');
     	    }else if(nextRoute.templateUrl==='views/user.html'){
     	    	$('.sidebar-nav li').eq(0).addClass('hide');
     	    	$('.sidebar-nav li').eq(2).addClass('hide');
     	    	$('.sidebar-nav li').eq(3).addClass('hide');
     	    	$('.sidebar-nav li').eq(4).removeClass('hide');
+    	    	$('.sidebar-nav li').eq(5).removeClass('hide');
     	    }
     });
 });
