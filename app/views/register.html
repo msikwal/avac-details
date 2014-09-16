@@ -1,34 +1,32 @@
 <div class="page_title">Register</div>
-<div class="js_log_details">
+<div class="js_log_details" ng-controller="RegisterCtrl">
 	<form class="form-horizontal" role="form" method="post" action=""
 		name="reg_frm" id="reg_frm">
 		<div class="col-sm-5 col-sm-offset-4 text-danger error "></div>
-		<!-- <div class="form-group">
-				<label for="inputEmail3" class="col-sm-4 control-label">Log in using</label>
-				<div class="col-sm-5">
-					<input type="radio" class="col-sm-offset-2" id="inputEmail3" >Mobile&nbsp;
-					<input type="radio" class="col-sm-offset-2" id="inputEmail3" >Username
-				</div>
-			</div> -->
 		<div class="form-group">
 			<div class="col-sm-5">
-				<input type="tel" pattern="[0-9]{10,10}" class="form-control "
-					id="mobile_num" name="mobile_num" placeholder="Enter Mobile Number"
-					autocomplete="off" maxlength="10" required>
+				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control " id="mobileNum" name="mobileNum" placeholder="Mobile Number"
+					autocomplete="on" ng-maxlength="10" required ng-model="reguser.mobile_num">
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-5">
-				<input type="password" class="form-control" id="u_pass"
-					name="u_pass" placeholder="Password" required>
+				<input type="password" class="form-control" id="uPassword" name="uPassword" placeholder="Password" required ng-model="reguser.u_pass" ng-minlength="5" ng-maxlength="15">
+				<span class="error" ng-show="reg_frm.uPassword.$dirty && reg_frm.uPassword.$error.minlength">Too short</span>
+    			<span ng-show="reg_frm.uPassword.$dirty && reg_frm.uPassword.$error.required">Password required.</span><br />
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-5">
-				<input type="password" class="form-control" id="c_pass"
-					name="c_pass" placeholder="Confirm Password" required>
+				<input type="password" class="form-control" id="ucPassword" name="ucPassword" placeholder="Confirm Password" required ng-model="reguser.c_pass" ng-minlength="5" ng-maxlength="15">
 			</div>
+			<span class="error" ng-show="reg_frm.ucPassword.$dirty && reg_frm.ucPassword.$error.minlength">Too short</span>
+			    <span ng-show="reg_frm.ucPassword.$dirty && reg_frm.ucPassword.$error.required">Retype password.</span>
+			    <div ng-show="(reg_frm.uPassword.$dirty && reg_frm.ucPassword.$dirty) && (reguser.u_pass != reguser.c_pass)">
+			        <span>Password mismatched</span>
+			    </div>
 		</div>
+		
 		<!-- <div class="form-group">
 					<div class="col-sm-offset-4 col-sm-5">
 						<div class="checkbox">
@@ -39,7 +37,8 @@
 				</div> -->
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-5">
-				<button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+				<button ng-click="register(reguser)" ng-disabled="reg_frm.$invalid || isUnchanged(reguser)" class="btn btn-primary btn-block ">Submit</button>
+    			<button ng-click="reset()" ng-disabled="isUnchanged(reguser)" class="btn btn-primary btn-block ">Reset</button>
 			</div>
 		</div>
 	</form>

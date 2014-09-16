@@ -227,7 +227,10 @@ angular.module('vacService', [])
 		},
 		userLogin: function (opt) {
 			httpPostOrPut({name: 'login', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data });
-		}
+		},
+		userRegister: function (opt) {
+			httpPostOrPut({name: 'login', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data });
+		},
 	};
 }).service('Session', function () {
 	this.create = function (sessionId, userId, userRole) {

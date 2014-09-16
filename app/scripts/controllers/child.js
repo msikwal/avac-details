@@ -10,10 +10,6 @@
 angular.module('avacDetailsApp')
   .controller('ChildCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
 	$scope.updateSuccess ="0";
-	var handleSuccessCall = function (rowdata){
-		$scope.child = rowdata.data[0];
-		console.log($scope.child);
-	};
 	var handleUpdateSuccessCall = function (rowdata){
 		$scope.updateSuccess = rowdata.status;
 	}; 

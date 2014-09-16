@@ -48,7 +48,54 @@ angular.module('avacDetailsApp')
       return angular.equals(user, $scope.master);
     };
     $scope.reset();
-}).controller('LoginOutCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
+}).controller('RegisterCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
+	$scope.master = {};
+	var handleSuccessCall = function (rowdata){
+		
+		if(rowdata.status==1){
+			$location.path('/login');
+		}else{
+			console.log(rowdata);
+		}
+		//$scope.userDetails  = rowdata.data[0];
+		/*var userRole;
+		var token = new Date().getTime() * rowdata.status * 100;
+		if(rowdata.status==1){
+			userRole = 'doctor';
+			AuthenticationService.isAuthenticated =true;
+			$location.path('/doctor');
+		}else if(rowdata.status ==2){
+			AuthenticationService.isAuthenticated =true;
+			userRole = 'reguser';
+			$location.path('/user');
+		}
+		Session.create(token,$scope.master.mobile_num,userRole);*/
+	};
+	var handleFailCall = function (rowdata){
+		console.log(rowdata);
+	};
+    $scope.register = function(reguser) {
+      $scope.master = angular.copy(reguser);
+      console.log($scope.master);
+      VacService.userRegister({ 
+			success: handleSuccessCall,
+			fail : handleFailCall,
+			action : 'register',
+			data : $scope.master,
+			method : 'POST'
+	  });
+    };
+
+    $scope.reset = function() {
+      $scope.reguser = angular.copy($scope.master);
+    };
+
+    $scope.isUnchanged = function(reguser) {
+      return angular.equals(reguser, $scope.master);
+    };
+    $scope.reset();
+})
+.controller('LoginOutCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
 	Session.destroy();
 	AuthenticationService.isAuthenticated =false;
 	AuthenticationService.isDoc =false;
