@@ -9,9 +9,17 @@
  */
 angular.module('avacDetailsApp')
   .controller('ChildCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
-	$scope.updateSuccess ="0";
+	$scope.statusVal = null;
 	var handleUpdateSuccessCall = function (rowdata){
 		$scope.updateSuccess = rowdata.status;
+		if(rowdata.status==1){
+			$scope.statusVal = 1;
+			$scope.res_msg = "Record Added !!!";
+		}else{
+			$scope.res_msg = "Error Occoured!!";
+		}
+		$('#c_frm')[0].reset();
+		$scope.c_frm.$setPristine();
 	}; 
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
@@ -44,5 +52,7 @@ angular.module('avacDetailsApp')
     };
    
     $scope.reset();
+    $scope.max_date = moment().format('YYYY-MM-DD');
+    $scope.min_date  = moment(moment().subtract(20, 'years')._d).format('YYYY-MM-DD');
 });
 

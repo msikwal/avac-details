@@ -1,7 +1,7 @@
 <div class="page_title">Login</div>
 <div class="panel-body js_log_details">
+	<div class="text-danger error" ng-show="invalidDetails" ng-bind-html="errorMsg"></div>
 	<form class="form-horizontal" role="form" name="log_frm" id="log_frm">
-		<div class="col-sm-5 col-sm-offset-4 text-danger error "></div>
 		<!-- <div class="form-group">
 				<label for="inputEmail3" class="col-sm-4 control-label">Log in using</label>
 				<div class="col-sm-5">
@@ -19,7 +19,7 @@
 				<div class="checkbox">
 					<label> <input type="checkbox"> Remember me
 					</label>
-		</div>
+				</div>
 		<div class="form-group">
     			<button ng-click="login(user)" ng-disabled="log_frm.$invalid || isUnchanged(user)" class="btn btn-primary btn-block ">Login</button>
     			<button ng-click="reset()" ng-disabled="isUnchanged(user)" class="btn btn-primary btn-block ">RESET</button>

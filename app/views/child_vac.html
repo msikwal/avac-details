@@ -1,6 +1,7 @@
 <div class="page_title">Child Information </div>
 <div class="child-details  ">
-	<form class="form-horizontal" role="form" method="post" action="" name="c_frm" id="c_frm">
+	<div ng-class="{true:'text-danger error', false:'text-success error'}[statusVal]" ng-show="statusVal" ng-bind-html="res_msg"></div>
+	<form class="form-horizontal" role="form" method="post" action="" name="c_frm" id="c_frm" novalidate>
 		<div class="form-group ">
 			<div class="col-sm-5">
 				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control " id="mobileNum" name="mobileNum" placeholder="Mobile Number" autocomplete="on" ng-maxlength="10" required ng-model="child.mobile_num">
@@ -10,18 +11,18 @@
 			<label for="c_name" class="col-sm-4 control-label">Vaccination for</label>
 			<div class="col-sm-5">
 				<input type="radio" ng-model="child.gender" value="male" required checked /> male
-    			<input type="radio" ng-model="child.gender" value="female" required /> female
+    			<input type="radio" ng-model="child.gender" value="female"  /> female
 			</div>
 		</div>
 		<div class="form-group ">
 			<div class="col-sm-5">
-				<input type="text"  class="form-control " id="childernName" ng-model="child.childern_name" name="childernName" placeholder="Enter Childern Name" ng-required autocomplete="off">
+				<input type="text"  class="form-control " id="childernName" ng-model="child.childern_name" name="childernName" placeholder="Enter Childern Name" required autocomplete="off">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="b_date" class="col-sm-4 control-label">Having Birth Date</label>
 			<div class="col-sm-5">
-				<input type="date" class="form-control" id="b_date" name="b_date" ng-model="child.birth_date" placeholder="Birth Date" ng-min={{min_date}}  ng-max={{max_date}} ng-required autocomplete="off">
+				<input type="date" class="form-control" id="b_date" name="b_date" ng-model="child.birth_date" placeholder="Birth Date" min={{min_date}}  max={{max_date}} required autocomplete="off">
 			</div>
 		</div>
 		<div class="form-group">

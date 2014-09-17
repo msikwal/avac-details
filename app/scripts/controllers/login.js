@@ -10,6 +10,8 @@
 angular.module('avacDetailsApp')
 .controller('LoginCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
 	$('#wrapper').removeClass('toggled');
+	$scope.invalidDetails =false;
+	$scope.errorMsg = null;
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
 		var userRole;
@@ -22,6 +24,9 @@ angular.module('avacDetailsApp')
 			AuthenticationService.isAuthenticated =true;
 			userRole = 'reguser';
 			$location.path('/user');
+		}else{
+			$scope.invalidDetails = true;
+			$scope.errorMsg = "Invalid Credentials.";
 		}
 		Session.create(token,$scope.master.mobile_num,userRole);
 	};
@@ -49,6 +54,7 @@ angular.module('avacDetailsApp')
     };
     $scope.reset();
 }).controller('RegisterCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
+	$('#wrapper').removeClass('toggled');
 	$scope.master = {};
 	var handleSuccessCall = function (rowdata){
 		
