@@ -57,25 +57,11 @@ angular.module('avacDetailsApp')
 	$('#wrapper').removeClass('toggled');
 	$scope.master = {};
 	var handleSuccessCall = function (rowdata){
-		
 		if(rowdata.status==1){
 			$location.path('/login');
 		}else{
 			console.log(rowdata);
 		}
-		//$scope.userDetails  = rowdata.data[0];
-		/*var userRole;
-		var token = new Date().getTime() * rowdata.status * 100;
-		if(rowdata.status==1){
-			userRole = 'doctor';
-			AuthenticationService.isAuthenticated =true;
-			$location.path('/doctor');
-		}else if(rowdata.status ==2){
-			AuthenticationService.isAuthenticated =true;
-			userRole = 'reguser';
-			$location.path('/user');
-		}
-		Session.create(token,$scope.master.mobile_num,userRole);*/
 	};
 	var handleFailCall = function (rowdata){
 		console.log(rowdata);
