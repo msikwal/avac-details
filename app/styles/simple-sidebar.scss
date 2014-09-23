@@ -187,3 +187,44 @@
 	padding-left: 0.875em !important;
 	padding-right: 0.875em !important;
 }
+
+
+.table tbody tr.vc_details td,
+.table tbody tr.vc_details th {
+	color: rgb(102,102,102);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    
+    /* gutter */
+    padding-right: 8px;
+    
+    /* allow content to be absolutely positioned, if needed */
+    position: relative;
+    
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding-top: 5px;
+    vertical-align: top;
+}
+.vc_details .vc_name {
+ 	display: block;
+    /* margin-top: 3px; */
+
+    /* font */
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 16px;
+
+    /* limit to one line with ellipsis when overflows */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 98px;
+}
+.vc_details .vc_givendate  {
+	width: 98px;
+}
+.vc_details .vc_givendate .form-control {
+	width : 85%;
+}

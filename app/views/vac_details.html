@@ -1,29 +1,29 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title">Vac Details </h3>
+<div class="panel_title">Vac Details</div>
+<div ng-repeat="(key,vacDetails) in vac_details">
+	<button class="btn btn-primary btn-block sep5px">{{key}}</button>
+	<div class="table-responsive" >
+		<table class="table">
+			<tr>
+				<th>Sr</th>
+				<th>Vac name</th>
+				<th>Start Date</th>
+				<th>Given Date</th>
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="(key1,val) in vacDetails track by $index" class="vc_details" >
+				<td><span class="vac_sr">{{val.vac_id}}</span></td>
+				<td><span class="vc_name">{{val.vac_name}}</span></td>
+				<td><span class="vc_startdate">{{val.start_date}}</span></td>
+				
+				<td>
+				<span class="vc_givendate" ng-if="val.given_date=='0000-00-00'"><input type="date" class="form-control" ng-model="vac_details[key][key1].given_date" id="givenDate" name="givenDate" placeholder="Date" min={{val.start_date}}   required autocomplete="off"></span>
+				<span class="vc_givendate" ng-if="val.given_date!=='0000-00-00'">{{val.given_date}}</span>
+				</td>
+				
+				<td ><button ng-click="updateShedule(val.id,key,key1);" ng-if="val.given_date=='0000-00-00'">Submit</button></td>
+			</tr>
+		</table>
 	</div>
-	<div class="panel-body">
-			{{#each this}}
-			<div class="panel panel-default">
-		    <div class="panel-heading">
-		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#{{@key}}">
-		          Details For BirthDate {{@key}}
-		        </a>
-		      </h4>
-		    </div>
-		    <div id="{{@key}}" class="panel-collapse collapse">
-		      	<div class="row" style="margin:0px;">
-		        {{#each this}}
-    				<ul class="col-xs-6 " style="height:80px;list-style:none;font-size:12px;">
-    					<li>{{this.id}}</li>
-    					<li>{{this.start_date}}</li>
-    					<li>{{this.vac_name}}</li>
-    				</ul>
-    			{{/each}}
-    			</div>
-		    </div>
-		  	</div>
-			{{/each}}
-	</div>
+
 </div>
+

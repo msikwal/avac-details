@@ -12,18 +12,19 @@
 		<div class="form-group">
 			<div class="col-sm-5">
 				<input type="password" class="form-control" id="uPassword" name="uPassword" placeholder="Password" required ng-model="reguser.u_pass" ng-minlength="5" ng-maxlength="15">
-				<span class="error" ng-show="reg_frm.uPassword.$dirty && reg_frm.uPassword.$error.minlength">Too short</span>
-    			<span ng-show="reg_frm.uPassword.$dirty && reg_frm.uPassword.$error.required">Password required.</span><br />
+				<span class="text-danger error " ng-show="reg_frm.uPassword.$dirty && reg_frm.uPassword.$error.minlength">Too short</span>
+    			<span class="text-danger error " ng-show="reg_frm.uPassword.$dirty && reg_frm.uPassword.$error.required">Password required.</span>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-5">
 				<input type="password" class="form-control" id="ucPassword" name="ucPassword" placeholder="Confirm Password" required ng-model="reguser.c_pass" ng-minlength="5" ng-maxlength="15">
-			</div>
-			<span class="error" ng-show="reg_frm.ucPassword.$dirty && reg_frm.ucPassword.$error.minlength">Too short</span>
-			    <span ng-show="reg_frm.ucPassword.$dirty && reg_frm.ucPassword.$error.required">Retype password.</span>
-			    <div ng-show="(reg_frm.uPassword.$dirty && reg_frm.ucPassword.$dirty) && (reguser.u_pass != reguser.c_pass)">
-			        <span>Password mismatched</span>
+			
+					<span class="text-danger error " ng-show="reg_frm.ucPassword.$dirty && reg_frm.ucPassword.$error.minlength">Too short</span>
+			    	<span class="text-danger error " ng-show="reg_frm.ucPassword.$dirty && reg_frm.ucPassword.$error.required">Retype password.</span>
+			    	<div ng-show="(reg_frm.uPassword.$dirty && reg_frm.ucPassword.$dirty) && (reguser.u_pass != reguser.c_pass)">
+			        	<span class="text-danger error ">Password mismatched</span>
+			    	</div>
 			    </div>
 		</div>
 		
@@ -37,7 +38,7 @@
 				</div> -->
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-5">
-				<button ng-click="register(reguser)" ng-disabled="reg_frm.$invalid || isUnchanged(reguser)" class="btn btn-primary btn-block " data-loading-text="Loading...">Submit</button>
+				<button ng-click="register(reguser)" ng-disabled="reg_frm.$invalid || isUnchanged(reguser) || (reguser.u_pass != reguser.c_pass)"  class="btn btn-primary btn-block " data-loading-text="Loading...">Submit</button>
     			<button ng-click="reset()" ng-disabled="isUnchanged(reguser)" class="btn btn-primary btn-block ">Reset</button>
 			</div>
 		</div>

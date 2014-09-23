@@ -31,6 +31,10 @@ app.constant('AUTH_EVENTS', {
                         		   templateUrl: 'views/user_launch.html',
                         		   controller: 'LoginCtrl'
                         	   })
+                        	   .when('/whyvac', {
+								    templateUrl: 'views/why_vaccinate.html',
+								    access: { requiredAuthentication: false }
+							   })
                         	   .when('/doctor', {
 								    templateUrl: 'views/doctor.html',
 								    controller: 'DoctorCtrl',
@@ -67,6 +71,10 @@ app.constant('AUTH_EVENTS', {
                         		   templateUrl: 'views/dashboard.html',
                         		   controller: 'DashboardCtrl'
                         	   })
+                        	   .when('/child-vac-details', {
+                        		   templateUrl: 'views/vac_details.html',
+                        		   controller: 'VacDetailsCtrl'
+                        	   })
                         	   .otherwise({
                         		   redirectTo: '/'
                         	   });
@@ -75,6 +83,7 @@ app.constant('AUTH_EVENTS', {
 app.run(function($rootScope, $location, $window, AuthenticationService) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
     		//console.log(currentRoute,AuthenticationService,nextRoute);
+    		$('#wrapper').removeClass('toggled');
     	    if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication 
     	            && !AuthenticationService.isAuthenticated) {
     	            $location.path("/login");

@@ -8,11 +8,23 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-  .controller('VacCtrl', function ($scope) {
-	$('#wrapper').removeClass('toggled');
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('VacDetailsCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
+    console.log(Session.userId);
+    var handleSuccessCall = function (rowdata){
+		//$scope.userDetails  = rowdata.data[0];
+		$scope.vac_details = rowdata.data;
+		console.log("========",$scope.vac_details);
+	};
+	$scope.updateShedule = function(id,birthDate,index){
+		console.log(id,$scope.vac_details[birthDate][index]);
+	};
+    if(Session.userId){
+	    $scope.mobile = Session.userId;
+	    VacService.getChildVacDetails({
+			callback: handleSuccessCall,
+			mobile: '?mode=vac&user_id=1'
+		});
+    }else{
+    	$location.path('/login');
+    }   
   });

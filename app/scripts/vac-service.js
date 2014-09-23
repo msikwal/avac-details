@@ -231,6 +231,9 @@ angular.module('vacService', [])
 		userRegister: function (opt) {
 			httpPostOrPut({name: 'login', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data });
 		},
+		getChildVacDetails: function (opt) {
+			httpGet({name: 'child', parm: opt.mobile, callback: opt.callback});
+		},
 	};
 }).service('Session', function () {
 	this.create = function (sessionId, userId, userRole) {
