@@ -1,29 +1,46 @@
 <div class="panel_title">Vac Details</div>
 <div ng-repeat="(key,vacDetails) in vac_details">
-	<button class="btn btn-primary btn-block sep5px">{{key}}</button>
-	<div class="table-responsive" >
+	<button class="btn btn-primary btn-block sep5px" ng-click="showVacDetails(key);">Vac Details Of {{vac_details[key][0].child_name}} [{{key | momentjs: 'Do MMM YYYY'}}]</button>
+	<div class="table-responsive hide d_{{key}} " >
 		<table class="table">
 			<tr>
 				<th>Sr</th>
+				<th>Child name</th>
 				<th>Vac name</th>
 				<th>Start Date</th>
-				<th>Given Date</th>
-				<th>Action</th>
+				<th>End Date</th>
 			</tr>
-			<tr ng-repeat="(key1,val) in vacDetails track by $index" class="vc_details" >
+			<tr ng-repeat="(key1,val) in vacDetails track by $index" class="vc_details " >
 				<td><span class="vac_sr">{{val.vac_id}}</span></td>
+				<td><span class="vac_sr">{{val.child_name}}</span></td>
 				<td><span class="vc_name">{{val.vac_name}}</span></td>
-				<td><span class="vc_startdate">{{val.start_date}}</span></td>
-				
-				<td>
+				<td><span class="vc_startdate">{{val.start_date | momentjs: 'Do MMM YYYY'}}</span></td>
+				<td><span class="vc_startdate">{{val.end_date | momentjs: 'Do MMM YYYY'}}</span></td>
+				<!--td>
 				<span class="vc_givendate" ng-if="val.given_date=='0000-00-00'"><input type="date" class="form-control" ng-model="vac_details[key][key1].given_date" id="givenDate" name="givenDate" placeholder="Date" min={{val.start_date}}   required autocomplete="off"></span>
 				<span class="vc_givendate" ng-if="val.given_date!=='0000-00-00'">{{val.given_date}}</span>
 				</td>
-				
-				<td ><button ng-click="updateShedule(val.id,key,key1);" ng-if="val.given_date=='0000-00-00'">Submit</button></td>
+				200: <span class="date time">{{article.pubTime | momentjs: 'M/D/YYYY hh:mm A'}}</span> 
+				<td ><button ng-click="updateShedule(val.id,key,key1);" ng-if="val.given_date=='0000-00-00'">Submit</button></td-->
 			</tr>
 		</table>
 	</div>
 
 </div>
 
+<!-- 
+<tr class="active">...</tr>
+<tr class="success">...</tr>
+<tr class="warning">...</tr>
+<tr class="danger">...</tr>
+<tr class="info">...</tr>
+
+<!-- On cells (`td` or `th`) 
+<tr>
+  <td class="active">...</td>
+  <td class="success">...</td>
+  <td class="warning">...</td>
+  <td class="danger">...</td>
+  <td class="info">...</td>
+</tr>
+-->

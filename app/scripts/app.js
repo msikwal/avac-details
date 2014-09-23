@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-var app = angular.module('avacDetailsApp', ['ngRoute','ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','vacService']);
+var app = angular.module('avacDetailsApp', ['ngRoute','ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','vacService','formatterService']);
 
 
 app.constant('AUTH_EVENTS', {

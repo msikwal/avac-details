@@ -18,6 +18,10 @@ angular.module('avacDetailsApp')
 	$scope.updateShedule = function(id,birthDate,index){
 		console.log(id,$scope.vac_details[birthDate][index]);
 	};
+	$scope.showVacDetails =function (key){
+		$(".table-responsive").addClass('hide');
+		$(".d_"+key).removeClass('hide');
+	};
     if(Session.userId){
 	    $scope.mobile = Session.userId;
 	    VacService.getChildVacDetails({
@@ -27,4 +31,5 @@ angular.module('avacDetailsApp')
     }else{
     	$location.path('/login');
     }   
+    
   });
