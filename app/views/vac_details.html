@@ -1,7 +1,7 @@
 <div class="panel_title">Vac Details</div>
 <div ng-repeat="(key,vacDetails) in vac_details">
 	<button class="btn btn-primary btn-block sep5px" ng-click="showVacDetails(key);">Vac Details Of {{vac_details[key][0].child_name}} [{{key | momentjs: 'Do MMM YYYY'}}]</button>
-	<div class="table-responsive hide d_{{key}} " >
+	<div class="table-responsive d_{{key}} " style="display:none;" >
 		<table class="table">
 			<tr>
 				<th>Sr</th>

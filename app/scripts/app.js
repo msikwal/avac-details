@@ -35,6 +35,11 @@ app.constant('AUTH_EVENTS', {
 								    templateUrl: 'views/why_vaccinate.html',
 								    access: { requiredAuthentication: false }
 							   })
+							   .when('/vacchart', {
+								    templateUrl: 'views/vac_chart.html',
+								    controller: 'VacChartCtrl',
+								    access: { requiredAuthentication: false }
+							   })
                         	   .when('/doctor', {
 								    templateUrl: 'views/doctor.html',
 								    controller: 'DoctorCtrl',

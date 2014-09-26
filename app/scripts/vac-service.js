@@ -234,6 +234,9 @@ angular.module('vacService', [])
 		getChildVacDetails: function (opt) {
 			httpGet({name: 'child', parm: opt.mobile, callback: opt.callback});
 		},
+		getChildVacChartDetails: function (opt) {
+			httpGet({name: 'child', parm: opt.mobile, callback: opt.callback});
+		}
 	};
 }).service('Session', function () {
 	this.create = function (sessionId, userId, userRole) {
