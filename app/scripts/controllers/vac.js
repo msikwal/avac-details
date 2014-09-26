@@ -13,7 +13,6 @@ angular.module('avacDetailsApp')
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
 		$scope.vac_details = rowdata.data;
-		console.log("========",$scope.vac_details);
 	};
 	$scope.updateShedule = function(id,birthDate,index){
 		console.log(id,$scope.vac_details[birthDate][index]);
@@ -28,7 +27,7 @@ angular.module('avacDetailsApp')
 		$scope.mobile = Session.userId;
 		VacService.getChildVacDetails({
 			callback: handleSuccessCall,
-			mobile: '?mode=vac&user_id=1'
+			mobile: '?mode=vac&user_id='+Session.getCurrentUser().user_id
 		});
 	}else{
 		$location.path('/login');
@@ -38,8 +37,7 @@ angular.module('avacDetailsApp')
 	VacService.getChildVacChartDetails({
 		callback: function (rowdata){
 			$scope.vac_chart_details = rowdata.data;
-			console.log($scope.vac_chart_details);
 		},
-		mobile: '?mode=vacChart'
+		mobile:'?mode=vacChart'
 	});
 });

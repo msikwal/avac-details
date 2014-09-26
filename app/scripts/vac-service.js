@@ -244,6 +244,12 @@ angular.module('vacService', [])
 		this.userId = userId;
 		this.userRole = userRole;
 	};
+	this.setCurrentUser = function (obj){
+		this.currentUser = obj;
+	};
+	this.getCurrentUser = function (){
+		return this.currentUser;
+	};
 	this.destroy = function () {
 		this.id = null;
 		this.userId = null;

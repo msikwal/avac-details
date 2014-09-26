@@ -14,6 +14,7 @@ angular.module('avacDetailsApp')
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
 		$scope.user = rowdata.data[0];
+		Session.setCurrentUser($scope.user);
 		console.log($scope.user);
 	};
 	var handleUpdateSuccessCall = function (rowdata){
