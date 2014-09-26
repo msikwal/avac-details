@@ -1,4 +1,5 @@
 <div class="page_title">Dashboard</div>
-<a class="btn btn-primary btn-block sep5px" ng-href="#/child">Vaccination</a>
-<button class="btn btn-primary btn-block sep5px">Pregnancy</button>
-<button class="btn btn-primary btn-block sep5px">Health Related</button>
+<span ng-show="userRole=='doctor'"><a class="btn btn-primary btn-block sep5px" ng-href="#/child" >Add Vaccination Details</a></span>
+<span ng-show="userRole=='reguser'"><a class="btn btn-primary btn-block sep5px" ng-href="#/child-vac-details" >Vaccination Details</a></span>
+<!-- button class="btn btn-primary btn-block sep5px">Pregnancy</button>
+<button class="btn btn-primary btn-block sep5px">Health Related</button-->

@@ -8,6 +8,7 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-  .controller('DashboardCtrl', function ($scope) {
+  .controller('DashboardCtrl', function ($scope,Session) {
 	$('#wrapper').removeClass('toggled');
+	$scope.userRole = Session.userRole;
 });

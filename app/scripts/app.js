@@ -93,17 +93,17 @@ app.run(function($rootScope, $location, $window, AuthenticationService) {
     	            && !AuthenticationService.isAuthenticated) {
     	            $location.path("/login");
     	    }else if(nextRoute.templateUrl==='views/doctor.html'){
+    	    	$('.sidebar-nav li').eq(0).addClass('hide');
     	    	$('.sidebar-nav li').eq(1).addClass('hide');
-    	    	$('.sidebar-nav li').eq(2).addClass('hide');
     	    	$('.sidebar-nav li').eq(3).addClass('hide');
-    	    	$('.sidebar-nav li').eq(4).removeClass('hide');
-    	    	$('.sidebar-nav li').eq(5).removeClass('hide');
+    	    	$('.sidebar-nav li').eq(6).removeClass('hide');
+    	    	$('.sidebar-nav li').eq(7).removeClass('hide');
     	    }else if(nextRoute.templateUrl==='views/user.html'){
     	    	$('.sidebar-nav li').eq(0).addClass('hide');
+    	    	$('.sidebar-nav li').eq(1).addClass('hide');
     	    	$('.sidebar-nav li').eq(2).addClass('hide');
-    	    	$('.sidebar-nav li').eq(3).addClass('hide');
-    	    	$('.sidebar-nav li').eq(4).removeClass('hide');
-    	    	$('.sidebar-nav li').eq(5).removeClass('hide');
+    	    	$('.sidebar-nav li').eq(6).removeClass('hide');
+    	    	$('.sidebar-nav li').eq(7).removeClass('hide');
     	    }
     });
 });
