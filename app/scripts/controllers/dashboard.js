@@ -9,6 +9,5 @@
  */
 angular.module('avacDetailsApp')
   .controller('DashboardCtrl', function ($scope,Session) {
-	$('#wrapper').removeClass('toggled');
 	$scope.userRole = Session.userRole;
 });

@@ -32,8 +32,8 @@
 					<!--li class="sidebar-brand"><a ng-href="#">Home</a></li>-->
 					<li class=''><a ng-href="#/">Login</a></li>
 					<li class=''><a ng-href="#/register">Register</a></li>
-					<li class=''><a ng-href="#/doctor">Doctor</a></li>
-					<li class=''><a ng-href="#/user">User</a></li>
+					<li class='hide'><a ng-href="#/doctor">Doctor</a></li>
+					<li class='hide'><a ng-href="#/user">User</a></li>
 					<li class=''><a ng-href="#/whyvac">Why Vaccinate?</a></li>
 					<li class=''><a ng-href="#/vacchart">Vaccination Chart</a></li>
 					<li class='hide'><a ng-href="#/dashboard">Dashboard</a></li>
@@ -42,9 +42,10 @@
 			</div>
 			
 			<div id="page-content-wrapper">
+			
 			<div class="row">
 				<div class=" mymenu" id="menu-toggle"><span>&nbsp;</span></div>
-					<div class="col-xs-9"></div>
+					<div class="pull-right"><div class='msloader'>Loading..</div></div>
 				</div>
 				<div ng-view=""></div>
 				<div class="footer">
@@ -87,9 +88,7 @@
 	<script src="bower_components/moment/moment.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
-
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
-	
 	<script src="scripts/app.js"></script>
 	<script src="scripts/vac-service.js"></script>
 	<script src="scripts/controllers/main.js"></script>
@@ -100,15 +99,6 @@
 	<script src="scripts/controllers/vac.js"></script>
 	<script src="scripts/controllers/login.js"></script>
 	<script src="scripts/formatter-service.js"></script>
-	<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    /*$('#page-content-wrapper').on('touchstart,touchmove'function(e) {
-    	e.preventDefault();
-    }*/
-    </script>
 	<!-- endbuild -->
 </body>
 </html>

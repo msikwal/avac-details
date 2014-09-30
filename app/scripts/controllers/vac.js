@@ -9,7 +9,6 @@
  */
 angular.module('avacDetailsApp')
 .controller('VacDetailsCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
-	console.log(Session.userId);
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
 		$scope.vac_details = rowdata.data;

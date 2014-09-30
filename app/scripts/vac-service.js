@@ -5,7 +5,7 @@ angular.module('vacService', [])
 .config(function ($httpProvider) {
 	$httpProvider.responseInterceptors.push('mrnHttpInterceptor');
 	var spinnerFunction = function (data) {
-		//$('.msloader').show();
+		$('.msloader').show();
 		return data;
 	};
 	$httpProvider.defaults.transformRequest.push(spinnerFunction);
@@ -13,7 +13,7 @@ angular.module('vacService', [])
 .factory('mrnHttpInterceptor', function ($q) {
 	return function (promise) {
 		return promise.then(function (response) {
-			//$('.msloader').hide();
+			$('.msloader').hide();
 			return response;
 
 		}, function (response) {

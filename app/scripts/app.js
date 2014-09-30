@@ -89,21 +89,26 @@ app.run(function($rootScope, $location, $window, AuthenticationService) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
     		//console.log(currentRoute,AuthenticationService,nextRoute);
     		$('#wrapper').removeClass('toggled');
-    	    if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication 
-    	            && !AuthenticationService.isAuthenticated) {
+    	    if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication && !AuthenticationService.isAuthenticated) {
     	            $location.path("/login");
     	    }else if(nextRoute.templateUrl==='views/doctor.html'){
     	    	$('.sidebar-nav li').eq(0).addClass('hide');
     	    	$('.sidebar-nav li').eq(1).addClass('hide');
     	    	$('.sidebar-nav li').eq(3).addClass('hide');
+    	    	$('.sidebar-nav li').eq(2).removeClass('hide');
     	    	$('.sidebar-nav li').eq(6).removeClass('hide');
     	    	$('.sidebar-nav li').eq(7).removeClass('hide');
     	    }else if(nextRoute.templateUrl==='views/user.html'){
     	    	$('.sidebar-nav li').eq(0).addClass('hide');
     	    	$('.sidebar-nav li').eq(1).addClass('hide');
     	    	$('.sidebar-nav li').eq(2).addClass('hide');
+    	    	$('.sidebar-nav li').eq(3).removeClass('hide');
     	    	$('.sidebar-nav li').eq(6).removeClass('hide');
     	    	$('.sidebar-nav li').eq(7).removeClass('hide');
     	    }
     });
+});
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
 });

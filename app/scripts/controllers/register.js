@@ -9,7 +9,6 @@
  */
 angular.module('avacDetailsApp')
   .controller('RegisterCtrl', function ($scope) {
-	$('#wrapper').removeClass('toggled');
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

@@ -9,14 +9,17 @@
  */
 angular.module('avacDetailsApp')
   .controller('DoctorCtrl', function ($scope,VacService,$routeParams,AuthenticationService,Session,$location) {
-	$('#wrapper').removeClass('toggled');
-	
+	$scope.updateSuccess = false;
 	var handleDocSuccessCall = function (rowdata){
 		$scope.doctor = rowdata.data[0];
 	};
 	var handleDocUpdateSuccess = function (rowdata){
-		//$scope.doctor = rowdata.data[0];
-		$scope.updateSuccess = rowdata.status;
+		if(rowdata.status==1){
+			$scope.updateSuccess = true;
+			$scope.srMsg = "Update Successfully.";
+		}else{
+			$scope.srMsg = "Error!!.";
+		}
 	};
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
@@ -27,7 +30,6 @@ angular.module('avacDetailsApp')
 	
     $scope.update = function(doctor) {
       $scope.master = angular.copy(doctor);
-      console.log($scope.master);
       VacService.saveDocDetails({ 
 			success: handleDocUpdateSuccess,
 			fail : handleFailCall,
@@ -42,7 +44,7 @@ angular.module('avacDetailsApp')
     };
 
     $scope.isUnchanged = function(doctor) {
-      $scope.updateSuccess ="0";
+      
       return angular.equals(doctor, $scope.master);
     };
     $scope.reset();

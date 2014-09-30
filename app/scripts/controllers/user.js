@@ -9,16 +9,19 @@
  */
 angular.module('avacDetailsApp')
 .controller('UserCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
-	$('#wrapper').removeClass('toggled');
-	$scope.updateSuccess ="0";
+	$scope.updateSuccess =  false;
 	var handleSuccessCall = function (rowdata){
-		//$scope.userDetails  = rowdata.data[0];
 		$scope.user = rowdata.data[0];
 		Session.setCurrentUser($scope.user);
-		console.log($scope.user);
 	};
 	var handleUpdateSuccessCall = function (rowdata){
-		$scope.updateSuccess = rowdata.status;
+		if(rowdata.status==1){
+			$scope.updateSuccess = true;
+			$scope.srMsg = "Update Successfully.";
+		}else{
+			$scope.srMsg = "Error!!.";
+		}
+		
 	}; 
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];

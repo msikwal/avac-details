@@ -1,7 +1,7 @@
 <div class="page_title">User Information</div>
 <div class="js_user_details" ng-controller="UserCtrl">
 	<form class="form-horizontal" role="form" name="user_frm" id="user_frm">
-		<div class="col-sm-5" ng-show="updateSuccess===1 || isUnchanged(user)">Update Successfully.</div>
+		<div class="col-sm-5 text-danger error" ng-show="updateSuccess" ng-bind-html="srMsg"></div>
 		<div class="form-group">
 			<div class="col-sm-5">
 				<input type="text"  class="form-control" id="fName" ng-model="user.first_name" name="fName" placeholder="Enter First Name" required >
