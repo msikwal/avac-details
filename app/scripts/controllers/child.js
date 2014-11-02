@@ -14,10 +14,11 @@ angular.module('avacDetailsApp')
 		$scope.updateSuccess = rowdata.status;
 		if(rowdata.status==1){
 			$scope.statusVal = 1;
-			$scope.res_msg = "Record Added !!!";
+			$(".modal-body").html("Record Added !!!");
 		}else{
-			$scope.res_msg = "Error Occoured!!";
+			$(".modal-body").html("Error Occoured!!");
 		}
+		$(".al-modal-sm").modal('show');
 		$('#c_frm')[0].reset();
 		$scope.c_frm.$setPristine();
 	}; 
@@ -30,7 +31,6 @@ angular.module('avacDetailsApp')
       if(Session.userId){
     	  child.docId = Session.userId;
     	  $scope.master = angular.copy(child);
-    	  console.log($scope.master);
     	  VacService.saveChildVacDetails({ 
 				success: handleUpdateSuccessCall,
 				fail : handleFailCall,

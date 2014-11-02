@@ -1,7 +1,7 @@
 <div class="page_title">Vac Details</div>
 <div ng-repeat="(key,vacDetails) in vac_details">
 	<button class="btn btn-primary btn-block sep5px" ng-click="showVacDetails(key);">Show Vac Details of {{vac_details[key][0].child_name}} [{{key | momentjs: 'Do MMM YYYY'}}]</button>
-	<a class="btn btn-primary btn-block sep5px" href="/vac/json/download.php?birth={{key}}&uid={{mobile}}">Set Reminder For {{vac_details[key][0].child_name}} [{{key | momentjs: 'Do MMM YYYY'}}]</a>
+	<!--a class="btn btn-primary btn-block sep5px" href="/vac/json/download.php?birth={{key}}&uid={{mobile}}">Set Reminder For {{vac_details[key][0].child_name}} [{{key | momentjs: 'Do MMM YYYY'}}]</a-->
 	<div class="table-responsive d_{{key}} " style="display:none;" >
 		<table class="table">
 			<tr>
