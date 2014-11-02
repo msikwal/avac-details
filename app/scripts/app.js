@@ -112,3 +112,7 @@ $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+function showPopup(msg){
+	$(".modal-body").html(msg);
+	$(".al-modal-sm").modal('show');
+}

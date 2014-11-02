@@ -9,16 +9,14 @@
  */
 angular.module('avacDetailsApp')
   .controller('DoctorCtrl', function ($scope,VacService,$routeParams,AuthenticationService,Session,$location) {
-	$scope.updateSuccess = false;
 	var handleDocSuccessCall = function (rowdata){
 		$scope.doctor = rowdata.data[0];
 	};
 	var handleDocUpdateSuccess = function (rowdata){
 		if(rowdata.status==1){
-			$scope.updateSuccess = true;
-			$scope.srMsg = "Update Successfully.";
+			showPopup("Update Successfully.");
 		}else{
-			$scope.srMsg = "Error!!.";
+			showPopup("Error!!");
 		}
 	};
 	var handleFailCall = function (rowdata){

@@ -9,16 +9,13 @@
  */
 angular.module('avacDetailsApp')
   .controller('ChildCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
-	$scope.statusVal = null;
 	var handleUpdateSuccessCall = function (rowdata){
 		$scope.updateSuccess = rowdata.status;
 		if(rowdata.status==1){
-			$scope.statusVal = 1;
-			$(".modal-body").html("Record Added !!!");
+			showPopup("Record Added Successfully.");
 		}else{
-			$(".modal-body").html("Error Occoured!!");
+			showPopup("Error Occoured!!");
 		}
-		$(".al-modal-sm").modal('show');
 		$('#c_frm')[0].reset();
 		$scope.c_frm.$setPristine();
 	}; 

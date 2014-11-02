@@ -9,17 +9,15 @@
  */
 angular.module('avacDetailsApp')
 .controller('UserCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
-	$scope.updateSuccess =  false;
 	var handleSuccessCall = function (rowdata){
 		$scope.user = rowdata.data[0];
 		Session.setCurrentUser($scope.user);
 	};
 	var handleUpdateSuccessCall = function (rowdata){
 		if(rowdata.status==1){
-			$scope.updateSuccess = true;
-			$scope.srMsg = "Update Successfully.";
+			showPopup("Update Successfully.");
 		}else{
-			$scope.srMsg = "Error!!.";
+			showPopup("Error!!");
 		}
 		
 	}; 
