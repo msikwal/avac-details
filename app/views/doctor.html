@@ -2,12 +2,12 @@
 <div class="js_doc_details" ng-controller="DoctorCtrl">
 	<form class="form-horizontal" role="form" name="doc_frm" id="doc_frm">
 		<div class="form-group">
-			<div class="col-sm-5">
+			<div class="col-sm-12">
 				<input type="text" class="form-control" id="f_name" ng-model="doctor.first_name" name="f_name" placeholder="Enter First Name" required>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-5">
+			<div class="col-sm-12">
 				<input type="text" class="form-control "
 					id="l_name"  ng-model="doctor.last_name" name="l_name" placeholder="Enter Last Name" required>
 			</div>
@@ -25,7 +25,7 @@
 					</div>
 				</div> -->
 		<div class="form-group">
-			<div class="col-sm-5">
+			<div class="col-sm-12">
 				<input type="email" class="form-control "
 					id="doc_email" ng-model="doctor.email" name="doc_email" placeholder="Enter Email">
 			</div>
@@ -37,14 +37,14 @@
 					</div>
 				</div> -->
 		<div class="form-group">
-			<div class="col-sm-5">
+			<div class="col-sm-12">
 				<textarea class="form-control " id="wel_msg" name="wel_msg" cols="3" placeholder="Enter text message"
 					rows="2" ng-model="doctor.text_msg" required></textarea>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<div class="js-submit-btn col-sm-offset-4 col-sm-5 ">
+			<div class="js-submit-btn col-sm-12 ">
     			<button ng-click="update(doctor)" ng-disabled="doc_frm.$invalid || isUnchanged(doctor)" class="btn btn-primary btn-block ">SAVE</button>
 			</div>
 		</div>
