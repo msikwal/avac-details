@@ -92,8 +92,10 @@ angular.module('avacDetailsApp')
 	AuthenticationService.isAuthenticated =false;
 	AuthenticationService.isDoc =false;
 	$('.sidebar-nav li').removeClass('hide');
-	$('.sidebar-nav li').eq(4).addClass('hide');
-	$('.sidebar-nav li').eq(5).addClass('hide');
+	$('.sidebar-nav li').eq(2).addClass('hide');
+	$('.sidebar-nav li').eq(3).addClass('hide');
+	$('.sidebar-nav li').eq(6).addClass('hide');
+	$('.sidebar-nav li').eq(7).addClass('hide');
 	$location.path('/');
 });
 
