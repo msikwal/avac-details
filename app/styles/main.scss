@@ -265,7 +265,13 @@ body,html {
 	font-weight: 600;
 	color: #FFFFFE;
 	line-height: 28px;
-}	
+	position : absolute;
+}
+.msPosition {
+	position : absolute;
+	left : 42%;
+	top : 40%;
+}
 .container {
 	padding-left: 0.875em !important;
 	padding-right: 0.875em !important;
@@ -317,4 +323,25 @@ body,html {
     letter-spacing: 0.03em;
     line-height: 22px;
     color :#9e9e9e;
+}
+#ajaxloader
+{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border: 8px solid #fff;
+	border-right-color: transparent;
+	border-radius: 50%;
+	box-shadow: 0 0 25px 2px #eee;
+}
+#ajaxloader
+{
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin
+{
+	from { transform: rotate(0deg);   opacity: 0.2; }
+	50%  { transform: rotate(180deg); opacity: 1.0; }
+	to   { transform: rotate(360deg); opacity: 0.2; }
 }
