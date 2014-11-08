@@ -10,7 +10,6 @@
 angular.module('avacDetailsApp')
   .controller('ChildCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
 	var handleUpdateSuccessCall = function (rowdata){
-		$scope.updateSuccess = rowdata.status;
 		if(rowdata.status==1){
 			showPopup("Record Added Successfully.");
 		}else{

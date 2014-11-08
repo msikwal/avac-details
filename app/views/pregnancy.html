@@ -1,52 +1,56 @@
-<div class="pre_details well well-sm">
+<div class="page_title">Mother Information </div>
+<div class="pre_details ">
 	<form class="form-horizontal" role="form" method="post" action="" name="p_frm" id="p_frm">
 		<div class="form-group">
-			<label for="m_name" class="col-sm-4 control-label">Mother Name</label>
-			<div class="col-sm-5">
-				<input type="text" class="form-control " id="m_name" name="m_name" placeholder="Enter Mother Name" required>
+			<!--label for="m_name" class="col-sm-4 control-label">Mother Name</label-->
+			<div class="col-sm-12">
+				<input type="text" class="form-control " ng-model="preDetails.mother_name" id="motherName" name="motherName" placeholder="Enter Mother Name" required>
+			</div>
+		</div>
+		<div class="form-group ">
+			<div class="col-sm-12">
+				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control " id="mobileNum" name="mobileNum" placeholder="Enter Mobile Number" autocomplete="on" ng-maxlength="10" required ng-model="preDetails.mobile_num">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="cur_month" class="col-sm-4 control-label">On Going Month</label>
+			<!--label for="cur_month" class="col-sm-4 control-label">On Going Month</label-->
 			<div class="col-sm-5">
-				<select class="form-control js-ongoingmonth"  name="cur_month" id="cur_month" required>
-					<option value="">Select Month</option>
-					<option value="1">First</option>
-					<option value="2">Second</option>
-					<option value="3">Third</option>
-					<option value="4">Fourth</option>
-					<option value="5">Fifth</option>
-					<option value="6">Sixth</option>
-					<option value="7">Seventh</option>
-					<option value="8">Eight</option>
-					<option value="9">Ninth</option>
-				</select>
+				<select class="form-control" ng-model="preDetails.currentMonth" required ng-change="displayExpDate(preDetails.currentMonth)"> 
+					<option value="">-- choose on going month --</option>
+					<option ng-repeat="month in months" value="{{month.val}}">{{month.name}}</option>
+    			</select>
 			</div>
 		</div>
-		<div class="form-group hide">
-			<label for="m_name" class="col-sm-4 control-label">Expected Month</label>
-			<div class="col-sm-4  d_expectedMonth"></div>
-		</div>
 		<div class="form-group">
+			<div class="col-xs-12 hide">
+				<div class="col-xs-6">
+					<label for="m_name" class="control-label">Expected Date</label>
+					<div class="d_expectedMonth"></div>
+				</div>
+				<div class="col-xs-6">
+					<label for="m_name" class="control-label">Remaining Days</label>
+					<div class="remainingDays"></div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-sm-12">
 			<label for="inputEmail3" class="col-sm-4 control-label">Notification Interval</label>
-			<div class="col-sm-5">
+			<div class="col-sm-8">
 				<div class="radio">
-					<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>15 Days 
-					</label>
+					<label><input type="radio" ng-model="preDetails.interval"  ng-value="interval" >15 days </label>
 				</div>
 				<div class="radio">
-					<label> <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">30 days 
-					</label>
+					<label> <input type="radio" ng-model="preDetails.interval"  value="30">30 days </label>
 				</div>
 				<div class="radio">
-					<label> <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">45 days 
-					</label>
+					<label> <input type="radio" ng-model="preDetails.interval" value="45">45 days </label>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-5">
-				<button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+			<div class="col-sm-12">
+				<button ng-click="update(preDetails)" ng-disabled="p_frm.$invalid || isUnchanged(preDetails)" class="btn btn-primary btn-block ">Save</button>
+				<a  class="btn btn-primary btn-block " href="#/dashboard">Back</a>
 			</div>
 		</div>
 	</form>
