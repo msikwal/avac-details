@@ -36,14 +36,8 @@
 		<div class="form-group col-sm-12">
 			<label for="inputEmail3" class="col-sm-4 control-label">Notification Interval</label>
 			<div class="col-sm-8">
-				<div class="radio">
-					<label><input type="radio" ng-model="preDetails.interval"  ng-value="interval" >15 days </label>
-				</div>
-				<div class="radio">
-					<label> <input type="radio" ng-model="preDetails.interval"  value="30">30 days </label>
-				</div>
-				<div class="radio">
-					<label> <input type="radio" ng-model="preDetails.interval" value="45">45 days </label>
+				<div class="radio" ng-repeat="interval in intervals">
+					<label><input type="radio" ng-model="preDetails.interval"  ng-value="interval" >{{interval.name}} </label>
 				</div>
 			</div>
 		</div>

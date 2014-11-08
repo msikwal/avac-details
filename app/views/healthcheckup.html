@@ -1,37 +1,36 @@
-<div class="health_details well well-sm">
-	<form class="form-horizontal" role="form" method="post" action="" name="h_frm" id="h_frm">
+<div class="page_title">Patient Information </div>
+<div class="pre_details ">
+	<form class="form-horizontal" role="form" method="post" action="" name="patient_frm" id="patient_frm">
 		<div class="form-group">
-			<label for="m_name" class="col-sm-4 control-label">Patient Name</label>
-			<div class="col-sm-5">
-				<input type="text" class="form-control" id="p_name" name="p_name" placeholder="Enter Patient Name" required>
+			<div class="col-sm-12">
+				<input type="text" class="form-control " ng-model="healthDetails.patient_name" id="patientName" name="patientName" placeholder="Enter Patient Name" required>
+			</div>
+		</div>
+		<div class="form-group ">
+			<div class="col-sm-12">
+				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control " id="mobileNum" name="mobileNum" placeholder="Enter Mobile Number" autocomplete="on" ng-maxlength="10" required ng-model="healthDetails.mobile_num">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="m_name" class="col-sm-4 control-label">Doctor Name</label>
 			<div class="col-sm-5">
-				<input type="text" class="form-control" id="d_name" name="d_name" placeholder="Enter Doctor Name" required>
+				<select class="form-control" ng-model="healthDetails.currentMonth"  ng-change="displayExpDate(healthDetails.currentMonth,healthDetails.interval)" required> 
+					<option value="">-- choose subscription --</option>
+					<option ng-repeat="month in months" value="{{month.val}}">{{month.name}}</option>
+    			</select>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="inputEmail3" class="col-sm-4 control-label">Notification Interval</label>
-			<div class="col-sm-5">
-				<div class="radio">
-					<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked >15 Days 
-					</label>
+		<div class="form-group col-sm-12">
+				<label for="inputEmail3" class="col-sm-4 control-label">Notification Interval after every </label>
+				<div class="col-sm-8">
+				<div class="radio" ng-repeat="duration in durations">
+					<label><input type="radio" ng-model="healthDetails.duration"  ng-value="duration" >{{duration.name}} </label>
 				</div>
-				<div class="radio">
-					<label> <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">30 days 
-					</label>
 				</div>
-				<div class="radio">
-					<label> <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">45 days 
-					</label>
-				</div>
-			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-5">
-				<button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+			<div class="col-sm-12">
+				<button ng-click="update(healthDetails)" ng-disabled="patient_frm.$invalid" class="btn btn-primary btn-block ">Save</button>
+				<a  class="btn btn-primary btn-block " href="#/dashboard">Back</a>
 			</div>
 		</div>
 	</form>

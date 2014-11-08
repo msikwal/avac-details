@@ -41,9 +41,12 @@ angular.module('avacDetailsApp')
 	});
 }).controller('VacPreCtrl', function ($scope,VacService,AuthenticationService,Session,$location){
 	$scope.preDetails = {};
-	$scope.preDetails['interval'] = {
-			"value": "15"
-	};
+	$scope.intervals = [
+	                 { name: "15 days", val: "15"},
+	                 { name: "30 days", val: "30"},
+	                 { name: "45 days", val: "45"}
+	];
+	//console.log($scope.preDetails);
 	$scope.months = [
 		 {name:'First', val:'1'},
 		 {name:'Second', val:'2'},
@@ -62,7 +65,6 @@ angular.module('avacDetailsApp')
 	        var currentDate = moment(moment().format('YYYY-MM-DD').split("-"));
 	        var expInDays 	= moment(expectedDate.format('YYYY-MM-DD').split("-"));
 	        var remainingDays = expInDays.diff(currentDate, 'days');
-	        //console.log(expInDays,currentDate,remainingDays);
 	        $(".remainingDays").html('');
 	        $(".d_expectedMonth").html('');
 	        if(remainingDays > 15){
@@ -84,10 +86,11 @@ angular.module('avacDetailsApp')
     };
     $scope.reset();
     $scope.update = function(preDetails) {
+    	console.log(preDetails);
     	if(Session.userId){
-    		preDetails.docId = Session.userId;
-    		$scope.master = angular.copy(preDetails);
-    		console.log(preDetails);
+    		preDetails.docId 	= Session.userId;
+    		$scope.master 		= angular.copy(preDetails);
+    		
     		/*VacService.savePregnancyDetails({ 
     			success: handleUpdateSuccessCall,
     			fail : handleFailCall,
@@ -98,6 +101,9 @@ angular.module('avacDetailsApp')
     	}else{
     		//$location.path('/login');
     	}
+    };
+    $scope.preDetails = {
+    		interval: $scope.intervals[0]
     };
     /*var handleUpdateSuccessCall = function (rowdata){
 		if(rowdata.status==1){

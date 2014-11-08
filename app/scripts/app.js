@@ -84,7 +84,10 @@ app.constant('AUTH_EVENTS', {
                         		   templateUrl: 'views/pregnancy.html',
                         		   controller: 'VacPreCtrl'
                         	   })
-                        	   
+                        	   .when('/health-details', {
+                        		   templateUrl: 'views/healthcheckup.html',
+                        		   controller: 'VacHealthCtrl'
+                        	   })
                         	   .otherwise({
                         		   redirectTo: '/'
                         	   });
