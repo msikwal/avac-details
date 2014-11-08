@@ -11,7 +11,6 @@ angular.module('avacDetailsApp')
 .controller('LoginCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
 	$('#wrapper').removeClass('toggled');
 	$scope.invalidDetails =false;
-	$scope.errorMsg = null;
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
 		var userRole;
@@ -26,7 +25,7 @@ angular.module('avacDetailsApp')
 			$location.path('/user');
 		}else{
 			$scope.invalidDetails = true;
-			$scope.errorMsg = "Invalid Credentials.";
+			showPopup("Invalid Credentials!");
 		}
 		Session.create(token,$scope.master.mobile_num,userRole);
 	};
