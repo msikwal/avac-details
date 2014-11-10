@@ -62,13 +62,19 @@ angular.module('avacDetailsApp')
     	var expectedMonth = 9 - parseInt(selected);
     	if(expectedMonth >= 0){
 	        var expectedDate  = moment(moment().add(9, 'days').add(expectedMonth, 'months')._d);
+	        var startOfpreg  = moment(moment().subtract(9, 'days').subtract(selected, 'months')._d);
+	        //console.log(startOfpreg);
 	        var currentDate = moment(moment().format('YYYY-MM-DD').split("-"));
 	        var expInDays 	= moment(expectedDate.format('YYYY-MM-DD').split("-"));
 	        var remainingDays = expInDays.diff(currentDate, 'days');
+	        
+	        //var totalDays = expInDays.diff(startOfpreg.format('YYYY-MM-DD').split("-"), 'days');
 	        $(".remainingDays").html('');
 	        $(".d_expectedMonth").html('');
 	        if(remainingDays > 15){
 		        $(".d_expectedMonth").html(expectedDate.format('DD-MMM-YYYY'));
+		        $scope.preDetails.expectedStartDate = startOfpreg.format('YYYY-MM-DD');
+		        $scope.preDetails.expectedDate = expectedDate.format('YYYY-MM-DD');
 		        $(".remainingDays").html(remainingDays);
 	        }else{
 	        	$(".d_expectedMonth").html("No need of any alert!!");
@@ -86,34 +92,42 @@ angular.module('avacDetailsApp')
     };
     $scope.reset();
     $scope.update = function(preDetails) {
-    	console.log(preDetails);
+    	//console.log(preDetails);
     	if(Session.userId){
     		preDetails.docId 	= Session.userId;
+    		for(var key in preDetails){
+    			if(typeof(preDetails[key])=="object"){
+    				preDetails[key] = preDetails[key].val;
+    			}
+    		}
     		$scope.master 		= angular.copy(preDetails);
-    		
-    		/*VacService.savePregnancyDetails({ 
+    		//console.log(preDetails);
+    		VacService.savePregnancyDetails({ 
     			success: handleUpdateSuccessCall,
     			fail : handleFailCall,
     			action : 'save',
     			data : $scope.master,
     			method : 'POST'
-    		});*/
+    		});
     	}else{
-    		//$location.path('/login');
+    		$location.path('/login');
     	}
     };
     $scope.preDetails = {
     		interval: $scope.intervals[0]
     };
-    /*var handleUpdateSuccessCall = function (rowdata){
+    var handleUpdateSuccessCall = function (rowdata){
 		if(rowdata.status==1){
-			showPopup("Record Added Successfully.");
+			showPopup("<span class='success'>Record Added Successfully.</span>");
+			$('#p_frm')[0].reset();
+		}else if(rowdata.status==2){
+			showPopup("<span class='danger'>Record Already Added!!.</span>");
 		}else{
-			showPopup("Error Occoured!!");
+			showPopup("<span class='danger'>Error Occoured!!</span>");
 		}
-		$('#p_frm')[0].reset();
+		$scope.p_frm.$setPristine();
 	}; 
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
-	};*/
+	};
 });

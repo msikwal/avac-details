@@ -345,3 +345,9 @@ body,html {
 	50%  { transform: rotate(180deg); opacity: 1.0; }
 	to   { transform: rotate(360deg); opacity: 0.2; }
 }
+.modal-body .danger {
+	color : #FA787E;
+}	
+.modal-body .success {	
+	color : #78FA89;
+}	
