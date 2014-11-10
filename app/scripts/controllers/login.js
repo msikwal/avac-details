@@ -8,8 +8,9 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-.controller('LoginCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
-	$('#wrapper').removeClass('toggled');
+.controller('LoginCtrl', function ($scope,VacService,Session,$location,AuthenticationService,$cookies) {
+	//$('#wrapper').removeClass('toggled');
+	
 	$scope.invalidDetails =false;
 	var handleSuccessCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
@@ -30,7 +31,7 @@ angular.module('avacDetailsApp')
 		Session.create(token,$scope.master.mobile_num,userRole);
 	};
 	var handleFailCall = function (rowdata){
-		console.log(rowdata);
+		showPopup("Please try after sometime!!");
 	};
 	$scope.master = {};
     $scope.login = function(user) {
@@ -52,6 +53,20 @@ angular.module('avacDetailsApp')
       return angular.equals(user, $scope.master);
     };
     $scope.reset();
+    if($cookies.user_mobile){
+    	$('#remember').attr('checked',true);
+    	$scope.user.mobile_num = $cookies.user_mobile;
+    };
+    $scope.checkRememberMe = function(){
+        if($('#remember').is(":checked")){
+        	var user_mobile_no = $("#mobileNum").val();
+        	if(user_mobile_no){
+        		 $cookies.user_mobile = user_mobile_no;
+        	}
+        }else{
+        	$cookies.user_mobile = "";
+        }
+    };
 }).controller('RegisterCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
 	$('#wrapper').removeClass('toggled');
 	$scope.master = {};
@@ -63,11 +78,11 @@ angular.module('avacDetailsApp')
 		}
 	};
 	var handleFailCall = function (rowdata){
-		console.log(rowdata);
+		showPopup("Please try after sometime!!");
 	};
     $scope.register = function(reguser) {
       $scope.master = angular.copy(reguser);
-      console.log($scope.master);
+      //console.log($scope.master);
       VacService.userRegister({ 
 			success: handleSuccessCall,
 			fail : handleFailCall,
@@ -84,7 +99,9 @@ angular.module('avacDetailsApp')
     $scope.isUnchanged = function(reguser) {
       return angular.equals(reguser, $scope.master);
     };
+    
     $scope.reset();
+    
 })
 .controller('LoginOutCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
 	Session.destroy();

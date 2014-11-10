@@ -20,6 +20,7 @@ angular.module('avacDetailsApp')
 	}; 
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
+		showPopup("Please try after sometime!!");
 	};
 	$scope.master = {};
 

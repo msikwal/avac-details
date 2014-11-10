@@ -9,6 +9,7 @@
  */
 angular.module('avacDetailsApp')
   .controller('DoctorCtrl', function ($scope,VacService,$routeParams,AuthenticationService,Session,$location) {
+	$scope.master = {};
 	var handleDocSuccessCall = function (rowdata){
 		$scope.doctor = rowdata.data[0];
 	};
@@ -20,12 +21,8 @@ angular.module('avacDetailsApp')
 		}
 	};
 	var handleFailCall = function (rowdata){
-		//$scope.userDetails  = rowdata.data[0];
-		//var dataVal = rowdata.data[0];
-		//console.log(rowdata);
+		showPopup("Please try after sometime!!");
 	};
-	$scope.master = {};
-	
     $scope.update = function(doctor) {
       $scope.master = angular.copy(doctor);
       VacService.saveDocDetails({ 

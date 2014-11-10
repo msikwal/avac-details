@@ -91,6 +91,23 @@ angular.module('avacDetailsApp')
         return angular.equals(preDetails, $scope.master);
     };
     $scope.reset();
+    
+    var handleUpdateSuccessCall = function (rowdata){
+		if(rowdata.status==1){
+			showPopup("<span class='success'>Record Added Successfully.</span>");
+			$('#p_frm')[0].reset();
+		}else if(rowdata.status==2){
+			showPopup("<span class='danger'>Record Already Added!!.</span>");
+		}else{
+			showPopup("<span class='danger'>Error Occoured!!</span>");
+		}
+		$scope.p_frm.$setPristine();
+	}; 
+	
+	var handleFailCall = function (rowdata){
+		showPopup("Please try after sometime!!");
+	};
+	
     $scope.update = function(preDetails) {
     	//console.log(preDetails);
     	if(Session.userId){
@@ -116,18 +133,5 @@ angular.module('avacDetailsApp')
     $scope.preDetails = {
     		interval: $scope.intervals[0]
     };
-    var handleUpdateSuccessCall = function (rowdata){
-		if(rowdata.status==1){
-			showPopup("<span class='success'>Record Added Successfully.</span>");
-			$('#p_frm')[0].reset();
-		}else if(rowdata.status==2){
-			showPopup("<span class='danger'>Record Already Added!!.</span>");
-		}else{
-			showPopup("<span class='danger'>Error Occoured!!</span>");
-		}
-		$scope.p_frm.$setPristine();
-	}; 
-	var handleFailCall = function (rowdata){
-		//$scope.userDetails  = rowdata.data[0];
-	};
+    
 });

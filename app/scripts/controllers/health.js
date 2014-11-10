@@ -42,6 +42,20 @@ angular.module('avacDetailsApp')
         return angular.equals(healthDetails, $scope.master);
     };
     $scope.reset();
+    var handleUpdateSuccessCall = function (rowdata){
+    	if(rowdata.status==1){
+			showPopup("<span class='success'>Record Added Successfully.</span>");
+			$('#patient_frm')[0].reset();
+		}else if(rowdata.status==2){
+			showPopup("<span class='danger'>Record Already Added!!.</span>");
+		}else{
+			showPopup("<span class='danger'>Error Occoured!!</span>");
+		}
+	}; 
+	var handleFailCall = function (rowdata){
+		showPopup("Please try after sometime!!");
+		//$scope.userDetails  = rowdata.data[0];
+	};
     $scope.update = function(healthDetails) {
     	if(Session.userId){
     		healthDetails.docId = Session.userId;
@@ -66,17 +80,4 @@ angular.module('avacDetailsApp')
     $scope.healthDetails = {
     		duration: $scope.durations[0]
     };
-    var handleUpdateSuccessCall = function (rowdata){
-    	if(rowdata.status==1){
-			showPopup("<span class='success'>Record Added Successfully.</span>");
-			$('#patient_frm')[0].reset();
-		}else if(rowdata.status==2){
-			showPopup("<span class='danger'>Record Already Added!!.</span>");
-		}else{
-			showPopup("<span class='danger'>Error Occoured!!</span>");
-		}
-	}; 
-	var handleFailCall = function (rowdata){
-		//$scope.userDetails  = rowdata.data[0];
-	};
 });

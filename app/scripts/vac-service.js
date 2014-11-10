@@ -34,7 +34,9 @@ angular.module('vacService', [])
 			user: '/vac/json/user.php',
 			login: '/vac/json/authUser.php',
 			doctor: '/vac/json/doctor.php',
-			child: '/vac/json/child.php'
+			child: '/vac/json/child.php',
+			pregenancy: '/vac/json/pregenancy.php',
+			health: '/vac/json/health.php'
 	},
 	isNetworkError = function (statusCode) {
 		return (typeof statusCode !== 'number' || statusCode < 200 || statusCode === 402 || statusCode > 404);
@@ -221,6 +223,12 @@ angular.module('vacService', [])
 		},
 		saveChildVacDetails: function (opt) {
 			httpPostOrPut({name: 'child', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data});
+		},
+		savePregnancyDetails: function (opt) {
+			httpPostOrPut({name: 'pregenancy', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data});
+		},
+		saveHealthDetails: function (opt) {
+			httpPostOrPut({name: 'health', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data});
 		},
 		saveDocDetails: function (opt) {
 			httpPostOrPut({name: 'doctor', successCallback: opt.success, failCallback: opt.fail,action : opt.action,data : opt.data});

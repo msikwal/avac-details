@@ -8,6 +8,11 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-  .controller('DashboardCtrl', function ($scope,Session) {
-	$scope.userRole = Session.userRole;
+  .controller('DashboardCtrl', function ($scope,Session,$location) {
+	  if(Session.userRole){
+		  	$scope.userRole = Session.userRole;
+	  }else{
+		  $location.path('/login');
+	  }
+	
 });
