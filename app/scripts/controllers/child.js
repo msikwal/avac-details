@@ -12,17 +12,18 @@ angular.module('avacDetailsApp')
 	var handleUpdateSuccessCall = function (rowdata){
 		if(rowdata.status==1){
 			showPopup("Record Added Successfully.");
+		}else if(rowdata.status==2){
+			showPopup("<span class='danger'>Record Already Added!!.</span>");
 		}else{
 			showPopup("Error Occoured!!");
 		}
-		$('#c_frm')[0].reset();
+		$scope.reset();
 		$scope.c_frm.$setPristine();
 	}; 
 	var handleFailCall = function (rowdata){
 		//$scope.userDetails  = rowdata.data[0];
 		showPopup("Please try after sometime!!");
 	};
-	$scope.master = {};
 
     $scope.update = function(child) {
       if(Session.userId){
@@ -39,9 +40,9 @@ angular.module('avacDetailsApp')
     	  $location.path('/login');
       }	  
     };
-
+    
     $scope.reset = function() {
-      $scope.child = angular.copy($scope.master);
+    	$scope.child = {};
     };
 
     $scope.isUnchanged = function(child) {

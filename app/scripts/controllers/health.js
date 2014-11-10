@@ -9,8 +9,6 @@
  */
 angular.module('avacDetailsApp')
 .controller('VacHealthCtrl', function ($scope,VacService,AuthenticationService,Session,$location){
-	$scope.healthDetails = {};
-	$scope.invalidDetails = false;
 	$scope.durations = [
 			{ name: "7 days", val: "7"},
 			{ name: "15 days", val: "15"},
@@ -33,28 +31,31 @@ angular.module('avacDetailsApp')
 		}else{
 			 $scope.invalidDetails = false;
 		}	
-				
     };
     $scope.reset = function() {
-        $scope.healthDetails = angular.copy($scope.master);
+    	$scope.invalidDetails = false;
+    	$scope.healthDetails = {};
+    	$scope.healthDetails = {
+        		duration: $scope.durations[0]
+        };
     };
     $scope.isUnchanged = function(healthDetails) {
         return angular.equals(healthDetails, $scope.master);
     };
-    $scope.reset();
+    
     var handleUpdateSuccessCall = function (rowdata){
     	if(rowdata.status==1){
 			showPopup("<span class='success'>Record Added Successfully.</span>");
-			$('#patient_frm')[0].reset();
 		}else if(rowdata.status==2){
 			showPopup("<span class='danger'>Record Already Added!!.</span>");
 		}else{
 			showPopup("<span class='danger'>Error Occoured!!</span>");
 		}
+    	$scope.reset();
+    	$scope.patient_frm.$setPristine();
 	}; 
 	var handleFailCall = function (rowdata){
 		showPopup("Please try after sometime!!");
-		//$scope.userDetails  = rowdata.data[0];
 	};
     $scope.update = function(healthDetails) {
     	if(Session.userId){
@@ -77,7 +78,6 @@ angular.module('avacDetailsApp')
     		$location.path('/login');
     	}
     };
-    $scope.healthDetails = {
-    		duration: $scope.durations[0]
-    };
+    $scope.reset();
+    
 });

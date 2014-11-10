@@ -3,15 +3,29 @@
 	<form class="form-horizontal" role="form" method="post" action="" name="c_frm" id="c_frm" novalidate>
 		<div class="form-group ">
 			<div class="col-sm-12">
-				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control " id="mobileNum" name="mobileNum" placeholder="Mobile Number" autocomplete="on" ng-maxlength="10" required ng-model="child.mobile_num">
+				<input type="password" ng-Pattern="/[0-9]{10,10}/" class="form-control " id="mobileNum" name="mobileNum" placeholder="Mobile Number" autocomplete="off" ng-maxlength="10" required ng-model="child.mobile_num">
+			</div>
+		</div>
+		<div class="form-group " ng-show="(!!child.mobile_num)">
+			<div class="col-sm-12">
+				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control "  ng-disabled="!(!!child.mobile_num)" id="ReMobileNum" name="ReMobileNum" placeholder="Confirm Mobile Number" autocomplete="off" ng-maxlength="10" required ng-model="child.re_mobile_num">
+				<div ng-show="(c_frm.mobileNum.$dirty && c_frm.ReMobileNum.$dirty) && (child.mobile_num != child.re_mobile_num)">
+			        <span class="text-danger error ">Mobile Number mismatched</span>
+			    </div>
 			</div>
 		</div>
 		<div class="form-group ">
-			<label for="c_name" class="col-sm-4 control-label">Vaccination for</label>
 			<div class="col-sm-12">
+				<select class="form-control" ng-model="child.gender" required > 
+					<option value="">-- Vaccination for --</option>
+					<option value="male">Baby Boy</option>
+					<option value="female">Baby Girl</option>
+    			</select>
+			</div>
+			<!-- div class="col-sm-12">
 				<input type="radio" ng-model="child.gender" value="male" required checked /> male
     			<input type="radio" ng-model="child.gender" value="female"  /> female
-			</div>
+			</div-->
 		</div>
 		<div class="form-group ">
 			<div class="col-sm-12">
@@ -25,7 +39,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-				<div class="col-sm-12"><input type="checkbox" checked ng-required> Accept Terms and Conditions</div>
+				<div class="col-sm-12"><input type="checkbox" checked ng-required ng-disabled="true"> Accept Terms and Conditions</div>
     	</div>	
 		<div class="form-group">
 			<div class="col-sm-12">

@@ -74,7 +74,8 @@ app.constant('AUTH_EVENTS', {
                         	   })
                         	   .when('/dashboard', {
                         		   templateUrl: 'views/dashboard.html',
-                        		   controller: 'DashboardCtrl'
+                        		   controller: 'DashboardCtrl',
+                        		   access: { requiredAuthentication: true }
                         	   })
                         	   .when('/child-vac-details', {
                         		   templateUrl: 'views/vac_details.html',
@@ -82,11 +83,13 @@ app.constant('AUTH_EVENTS', {
                         	   })
                         	   .when('/pre-details', {
                         		   templateUrl: 'views/pregnancy.html',
-                        		   controller: 'VacPreCtrl'
+                        		   controller: 'VacPreCtrl',
+                        		   access: { requiredAuthentication: true }
                         	   })
                         	   .when('/health-details', {
                         		   templateUrl: 'views/healthcheckup.html',
-                        		   controller: 'VacHealthCtrl'
+                        		   controller: 'VacHealthCtrl',
+                        		   access: { requiredAuthentication: true }
                         	   })
                         	   .otherwise({
                         		   redirectTo: '/'
