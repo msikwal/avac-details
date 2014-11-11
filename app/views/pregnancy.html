@@ -22,7 +22,7 @@
 		</div>
 		<div class="form-group">
 			<!--label for="cur_month" class="col-sm-4 control-label">On Going Month</label-->
-			<div class="col-sm-5">
+			<div class="col-sm-12">
 				<select class="form-control" ng-model="preDetails.currentMonth" required ng-change="displayExpDate(preDetails.currentMonth)"> 
 					<option value="">-- choose on going month --</option>
 					<option ng-repeat="month in months" value="{{month.val}}">{{month.name}}</option>
@@ -49,6 +49,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="form-group">
+				<div class="col-sm-12"><input type="checkbox" checked ng-required ng-disabled="true"> Accept Terms and Conditions</div>
+    	</div>
 		<div class="form-group">
 			<div class="col-sm-12">
 				<button ng-click="update(preDetails)" ng-disabled="p_frm.$invalid || isUnchanged(preDetails)" class="btn btn-primary btn-block ">Save</button>

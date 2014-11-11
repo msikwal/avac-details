@@ -38,6 +38,9 @@
 				</div>
 		</div>
 		<div class="form-group">
+				<div class="col-sm-12"><input type="checkbox" checked ng-required ng-disabled="true"> Accept Terms and Conditions</div>
+    	</div>
+		<div class="form-group">
 			<div class="col-sm-12">
 				<button ng-click="update(healthDetails)" ng-disabled="patient_frm.$invalid || isUnchanged(healthDetails) || invalidDetails==true" class="btn btn-primary btn-block ">Save</button>
 				<a  class="btn btn-primary btn-block " href="#/dashboard">Back</a>
