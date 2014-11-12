@@ -41,13 +41,13 @@ angular.module('avacDetailsApp')
 		var containHtml = '';
 		if(user=='doctor'){
 			 containHtml = '<div id="popOverBox"><ul>';
-	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/dashboard">Dashboad</a></li>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/dashboard">Dashboard</a></li>';
 	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/doctor">My Profile</a></li>';
 	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/logout">Logout</a></li>';
 	    	 containHtml+= '</ul></div>';
 		}else if(user=='reguser'){
 			 containHtml = '<div id="popOverBox"><ul>';
-	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/dashboard">Dashboad</a></li>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/dashboard">Dashboard</a></li>';
 	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/user">My Profile</a></li>';
 	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/logout">Logout</a></li>';
 	    	 containHtml+= '</ul></div>';
