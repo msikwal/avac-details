@@ -65,7 +65,7 @@ angular.module('avacDetailsApp')
     
     var handleUpdateSuccessCall = function (rowdata){
 		if(rowdata.status==1){
-			showPopup("<span class='success'>Record Added Successfully.</span>");
+			showPopup("<span class=''>Record Added Successfully.</span>");
 		}else if(rowdata.status==2){
 			showPopup("<span class='danger'>Record Already Added!!.</span>");
 		}else{

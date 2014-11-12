@@ -37,6 +37,7 @@ angular.module('avacDetailsApp')
 		if(!user){
 			return;
 		}
+		$('#right-menu-toggle').removeClass('hide');
 		var containHtml = '';
 		if(user=='doctor'){
 			 containHtml = '<div id="popOverBox"><ul>';
@@ -137,6 +138,7 @@ angular.module('avacDetailsApp')
 	Session.destroy();
 	AuthenticationService.isAuthenticated =false;
 	AuthenticationService.isDoc =false;
+	$('#right-menu-toggle').addClass('hide');
 	$('#right-menu-toggle').popover('destroy');
 	$('.sidebar-nav li').removeClass('hide');
 	$('.sidebar-nav li').eq(2).addClass('hide');
