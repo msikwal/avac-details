@@ -9,6 +9,7 @@
  */
 angular.module('avacDetailsApp')
 .controller('UserCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
+	$('#right-menu-toggle').popover('hide');
 	var handleSuccessCall = function (rowdata){
 		$scope.user = rowdata.data[0];
 		Session.setCurrentUser($scope.user);
@@ -19,7 +20,6 @@ angular.module('avacDetailsApp')
 		}else{
 			showPopup("Error!!");
 		}
-		
 	}; 
 	var handleFailCall = function (rowdata){
 		showPopup("Please try after sometime!!");
@@ -28,7 +28,6 @@ angular.module('avacDetailsApp')
 
     $scope.update = function(user) {
       $scope.master = angular.copy(user);
-      console.log($scope.master);
       VacService.saveUserDetails({ 
 			success: handleUpdateSuccessCall,
 			fail : handleFailCall,
@@ -43,7 +42,6 @@ angular.module('avacDetailsApp')
     };
 
     $scope.isUnchanged = function(user) {
-    	
       return angular.equals(user, $scope.master);
     };
     if(Session.userId){

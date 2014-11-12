@@ -9,6 +9,7 @@
  */
 angular.module('avacDetailsApp')
   .controller('DashboardCtrl', function ($scope,Session,$location) {
+	  $('#right-menu-toggle').popover('hide');
 	  if(Session.userRole){
 		  	$scope.userRole = Session.userRole;
 	  }else{

@@ -19,6 +19,7 @@ angular.module('avacDetailsApp')
 		if(rowdata.status==1){
 			userRole = 'doctor';
 			AuthenticationService.isAuthenticated =true;
+			
 			$location.path('/doctor');
 		}else if(rowdata.status ==2){
 			AuthenticationService.isAuthenticated =true;
@@ -28,7 +29,35 @@ angular.module('avacDetailsApp')
 			$scope.invalidDetails = true;
 			showPopup("Invalid Credentials!");
 		}
+		showRightPopoverMenu(userRole);
+		
 		Session.create(token,$scope.master.mobile_num,userRole);
+	};
+	var showRightPopoverMenu = function(user){
+		if(!user){
+			return;
+		}
+		var containHtml = '';
+		if(user=='doctor'){
+			 containHtml = '<div id="popOverBox"><ul>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/dashboard">Dashboad</a></li>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/doctor">My Profile</a></li>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/logout">Logout</a></li>';
+	    	 containHtml+= '</ul></div>';
+		}else if(user=='reguser'){
+			 containHtml = '<div id="popOverBox"><ul>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/dashboard">Dashboad</a></li>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/user">My Profile</a></li>';
+	    	 containHtml+= '<li role="presentation"><a tabindex="-1" href="#/logout">Logout</a></li>';
+	    	 containHtml+= '</ul></div>';
+		}
+		$('#right-menu-toggle').popover({
+		    placement : 'bottom',
+		    html : true,
+		    content : function (){
+		    	return containHtml;
+		    },
+		});
 	};
 	var handleFailCall = function (rowdata){
 		showPopup("Please try after sometime!!");
@@ -107,6 +136,7 @@ angular.module('avacDetailsApp')
 	Session.destroy();
 	AuthenticationService.isAuthenticated =false;
 	AuthenticationService.isDoc =false;
+	$('#right-menu-toggle').popover('destroy');
 	$('.sidebar-nav li').removeClass('hide');
 	$('.sidebar-nav li').eq(2).addClass('hide');
 	$('.sidebar-nav li').eq(3).addClass('hide');

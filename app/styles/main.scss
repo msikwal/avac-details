@@ -259,6 +259,22 @@ body,html {
 	left: 16%;
 	box-shadow: 0 10px 0 #9e9e9e, 0 20px 0 #9e9e9e;
 }
+.right-menu {
+	position: relative;
+	width: 1em;
+	height: 30px;
+	float: right;
+}
+.right-menu span:after {
+	content: '';
+	position: absolute;
+	width: 20%;
+	height: 5px;
+	background: #9e9e9e;
+	top: 0px;
+	left: 16%;
+	box-shadow: 0 10px 0 #9e9e9e, 0 20px 0 #9e9e9e;
+}
 .msloader {
 	text-align: right;
 	font-size: 18px;
@@ -351,3 +367,41 @@ body,html {
 .modal-body .success {	
 	color : #78FA89;
 }	
+.popover.bottom > .arrow {
+	left: 50%;
+	margin-left: -11px;
+	border-top-width: 0;
+	border-bottom-color: #999999;
+	border-bottom-color: rgba(0, 0, 0, 0.05);
+	top: -11px;
+	display : none;
+}
+.popover.bottom {
+	margin-top: 3px !important;
+	margin-left: -15px !important;
+}
+.popover {
+	position: absolute;
+	top: 0;
+	left: 61% !important;
+	min-width: 40%;
+	z-index: 1060;
+	display: none;
+	max-width: 276px;
+	padding: 1px;
+	text-align: left;
+	background-color: white;
+	background-clip: padding-box;
+	border: 1px solid #cccccc;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 6px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	white-space: normal;
+}
+#popOverBox ul{
+	padding: 0px 0px 0px 5px;
+	list-style: none;
+}
+#popOverBox ul li {
+	padding-bottom: 10px;
+}		
