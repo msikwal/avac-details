@@ -9,7 +9,6 @@
  */
 angular.module('avacDetailsApp')
   .controller('DoctorCtrl', function ($scope,VacService,$routeParams,AuthenticationService,Session,$location) {
-	$('#right-menu-toggle').popover('hide');
 	$scope.master = {};
 	var handleDocSuccessCall = function (rowdata){
 		$scope.doctor = rowdata.data[0];

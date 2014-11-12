@@ -9,7 +9,6 @@
  */
 angular.module('avacDetailsApp')
 .controller('UserCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
-	$('#right-menu-toggle').popover('hide');
 	var handleSuccessCall = function (rowdata){
 		$scope.user = rowdata.data[0];
 		Session.setCurrentUser($scope.user);

@@ -54,6 +54,7 @@ angular.module('avacDetailsApp')
 		$('#right-menu-toggle').popover({
 		    placement : 'bottom',
 		    html : true,
+		    trigger: 'hover',
 		    content : function (){
 		    	return containHtml;
 		    },
