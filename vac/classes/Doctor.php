@@ -10,9 +10,9 @@ class Doctor
 	public function getDocDetails($id=""){
 		if($id){
 			$array = array("mobile"=>$id);
-			$result = $this->db->query("SELECT * FROM  doc_details WHERE mobile = :mobile",$array);
+			$result = $this->db->query("SELECT first_name,last_name,mobile,email,text_msg FROM  doc_details WHERE mobile = :mobile",$array);
 		}else{
-			$result = $this->db->query("SELECT * FROM  doc_details");
+			$result = $this->db->query("SELECT first_name,last_name,mobile,email,text_msg FROM  doc_details");
 		}
 		return $result;
 	}
@@ -41,7 +41,7 @@ class Doctor
 		//exit;
 		$update	 =  $this->db->query("UPDATE doc_details set first_name = :first_name,last_name = :last_name,email = :email,text_msg = :text_msg where mobile = :mobile ",$arrDoc); 
 		//echo"<pre>";
-		if($update===0){
+		if($update==1){
 			return 1;
 		}else{
 			return 0;
@@ -58,9 +58,9 @@ class Doctor
 					"mobile"=>isset($arr['mobile_num']) ?$arr['mobile_num'] : "",
 					"email" => isset($arr['doc_email']) ? $arr['doc_email'] : "",
 					"address" =>isset($arr['address']) ? $arr['address'] : "" ,
-					"pincode" =>isset($arr['pincode']) ? $arr['pincode'] : "" ,
+					"pincode" =>isset($arr['pincode']) ? $arr['pincode'] : 0 ,
 					"location" =>isset($arr['location']) ? $arr['location'] : "" ,
-					"phone" =>"",
+					"phone" => 0,
 					"text_msg" =>isset($arr['wel_msg']) ? $arr['wel_msg'] : "" ,
 					"per_patient_amt" =>isset($arr['per_patient_amt']) ? $arr['per_patient_amt'] : "50" ,
 					"registration_date" =>$today,

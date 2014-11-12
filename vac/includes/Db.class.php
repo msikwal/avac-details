@@ -41,7 +41,6 @@ class DB
 			$this->Connect();
 			$this->parameters = array();
 		}
-	
        /**
 	*	This method makes connection to the database.
 	*	

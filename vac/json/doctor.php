@@ -1,8 +1,14 @@
 <?php
 require("../includes/Db.class.php");
 require("../classes/Doctor.php");
+require("../classes/Validation.php");
 $mode 			= isset($_REQUEST['mode']) ? $_REQUEST['mode'] : "";
-$inputArr		= $_REQUEST;
+if($mode=='save' || $mode=='update'){
+	$givenInputArr	= $_POST;
+}else{
+	$givenInputArr	= $_REQUEST;	
+}
+$inputArr       = Validation::validateUserInput($givenInputArr);
 switch($mode){
 	case "save" :
 			$arr = saveDoctorInfo($inputArr);

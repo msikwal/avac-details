@@ -19,12 +19,12 @@ class User
 	public function updateUserDetails($arr){
 		
 		$arrUser 	=  array(
-					"first_name"=>isset($arr['f_name']) ? $arr['f_name'] : "" ,
-					"last_name"=>isset($arr['l_name']) ? $arr['l_name'] : "" ,
+					"first_name"=>isset($arr['first_name']) ? $arr['first_name'] : "" ,
+					"last_name"=>isset($arr['last_name']) ? $arr['last_name'] : "" ,
 					"uid"=>isset($arr['user_id']) ? $arr['user_id'] : "" ,
 					//"password"=>isset($arr['u_pass']) ? $arr['u_pass'] : "",
-					"email" => isset($arr['user_email']) ? $arr['user_email'] : "",
-					"address" =>isset($arr['user_address']) ? $arr['user_address'] : "" ,
+					"email" => isset($arr['email']) ? $arr['email'] : "",
+					"address" =>isset($arr['address']) ? $arr['address'] : "" ,
 					//"pincode" =>isset($arr['pincode']) ? $arr['pincode'] : "" ,
 					//"location" =>isset($arr['location']) ? $arr['location'] : "" ,
 					//"phone" =>"",
@@ -39,14 +39,13 @@ class User
 		//echo"</pre>";
 		//exit;
 		$update	 =  $this->db->query("UPDATE user_details set first_name = :first_name,last_name = :last_name,email = :email, address = :address  where user_id = :uid ",$arrUser); 
-		//echo"<pre>";
-		if($update===0){
+		
+		if($update==1){
 			return 1;
 		}else{
 			return 0;
 		}
-		//var_dump($update);
-		//echo"</pre>";
+		
 	}
 	public function insertUserDetails($input_arr){
 		$authObj 	= new UserLoginDetails($this->db);
@@ -67,9 +66,9 @@ class User
 				"refer_by_doc"=>$input_arr['docId'],
 				"email" => "test@test.com",
 				"address" =>"",
-				"pincode" =>"",
+				"pincode" =>0,
 				"location" =>"",
-				"phone" =>"",
+				"phone" =>0,
 				"registration_date" =>$today,
 				"group_id" => "2"
 		);

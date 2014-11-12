@@ -16,9 +16,6 @@ switch($mode){
 			$arr = AuthUser($inputArr);
 			
 }
-//header('Content-type: application/json');
-//header('Content-type: application/javascript');
-//echo $_REQUEST['callback'] . '(' . json_encode($arr) . ');';
 echo json_encode($arr);
 exit;
 function RegisterUser($inputArr){

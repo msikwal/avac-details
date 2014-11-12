@@ -2,5 +2,5 @@
 [SQL]
 host = localhost
 user = root
-password = root
+password = "" 
 dbname = lasikaran

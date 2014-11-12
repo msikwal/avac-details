@@ -13,7 +13,7 @@ class UserLoginDetails
 					"password"=>isset($inputArr['u_pass']) ?$inputArr['u_pass'] : "",
 				 );
 				
-		$result = $this->db->query("SELECT * FROM  user_login_details WHERE user_mobile = :mobile and password = :password",$array);
+		$result = $this->db->query("SELECT group_id FROM  user_login_details WHERE user_mobile = :mobile and password = :password",$array);
 		return $result;
 	}
 	public function updateUserLogInDetails($arr){
