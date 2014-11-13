@@ -9,7 +9,7 @@
 		</div>
 		<div class="form-group ">
 			<div class="col-sm-12">
-				<input type="password" ng-Pattern="/[0-9]{10,10}/" class="form-control " id="mobileNum" name="mobileNum" placeholder="Enter Mobile Number" autocomplete="on" ng-maxlength="10" required ng-model="preDetails.mobile_num">
+				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control securityMobile" id="mobileNum" name="mobileNum" placeholder="Enter Mobile Number" autocomplete="on" ng-maxlength="10" required ng-model="preDetails.mobile_num">
 			</div>
 		</div>
 		<div class="form-group " ng-show="(!!preDetails.mobile_num)">
