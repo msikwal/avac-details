@@ -8,7 +8,7 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-.controller('VacPreCtrl', function ($scope,VacService,AuthenticationService,Session,$location){
+.controller('VacPreCtrl', function ($scope,VacService,Session,$location){
 	
 	$scope.intervals = [
 	                 { name: "15 days", val: "15"},

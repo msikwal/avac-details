@@ -8,7 +8,7 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-.controller('UserCtrl', function ($scope,VacService,AuthenticationService,Session,$location) {
+.controller('UserCtrl', function ($scope,VacService,Session,$location) {
 	var handleSuccessCall = function (rowdata){
 		$scope.user = rowdata.data[0];
 		Session.setCurrentUser($scope.user);

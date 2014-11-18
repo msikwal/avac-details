@@ -8,10 +8,11 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-  .controller('DoctorCtrl', function ($scope,VacService,$routeParams,AuthenticationService,Session,$location) {
+  .controller('DoctorCtrl', function ($scope,VacService,$routeParams,Session,$location,StateService) {
 	$scope.master = {};
 	var handleDocSuccessCall = function (rowdata){
 		$scope.doctor = rowdata.data[0];
+		StateService.saveUserInfo($scope.doctor);
 	};
 	var handleDocUpdateSuccess = function (rowdata){
 		if(rowdata.status==1){
@@ -45,10 +46,14 @@ angular.module('avacDetailsApp')
     $scope.reset();
     if(Session.userId){
 	    $scope.mobile = Session.userId;
-	    VacService.getDocDetails({
-	    	callback: handleDocSuccessCall,
-	    	mobile: '?mobile='+Session.userId
-		});
+	    if(!StateService.getUserInfo()){
+		    VacService.getDocDetails({
+		    	callback: handleDocSuccessCall,
+		    	mobile: '?mobile='+Session.userId
+			});
+	    }else{
+	    	$scope.doctor = StateService.getUserInfo();
+	    }
     }else{
     	$location.path('/login');
     }   

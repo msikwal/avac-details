@@ -8,8 +8,7 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-.controller('LoginCtrl', function ($scope,VacService,Session,$location,AuthenticationService,$cookies) {
-	//$('#wrapper').removeClass('toggled');
+.controller('LoginCtrl', function ($scope,VacService,Session,$location,$cookies,StateService) {
 	
 	$scope.invalidDetails =false;
 	var handleSuccessCall = function (rowdata){
@@ -18,8 +17,6 @@ angular.module('avacDetailsApp')
 		var token = new Date().getTime() * rowdata.status * 100;
 		if(rowdata.status==1){
 			userRole = 'doctor';
-			AuthenticationService.isAuthenticated =true;
-			
 			$location.path('/doctor');
 		}else if(rowdata.status ==2){
 			AuthenticationService.isAuthenticated =true;
@@ -28,9 +25,12 @@ angular.module('avacDetailsApp')
 		}else{
 			$scope.invalidDetails = true;
 			showPopup("Invalid Credentials!");
+			return false;
 		}
+		StateService.setUserId($scope.master.mobile_num);
+		StateService.setToken(token);
+		StateService.setUserRole(userRole);
 		showRightPopoverMenu(userRole);
-		
 		Session.create(token,$scope.master.mobile_num,userRole);
 	};
 	var showRightPopoverMenu = function(user){
@@ -98,46 +98,9 @@ angular.module('avacDetailsApp')
         	$cookies.user_mobile = "";
         }
     };
-}).controller('RegisterCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
-	$('#wrapper').removeClass('toggled');
-	$scope.master = {};
-	var handleSuccessCall = function (rowdata){
-		if(rowdata.status==1){
-			$location.path('/login');
-		}else{
-			console.log(rowdata);
-		}
-	};
-	var handleFailCall = function (rowdata){
-		showPopup("Please try after sometime!!");
-	};
-    $scope.register = function(reguser) {
-      $scope.master = angular.copy(reguser);
-      //console.log($scope.master);
-      VacService.userRegister({ 
-			success: handleSuccessCall,
-			fail : handleFailCall,
-			action : 'register',
-			data : $scope.master,
-			method : 'POST'
-	  });
-    };
-
-    $scope.reset = function() {
-      $scope.reguser = angular.copy($scope.master);
-    };
-
-    $scope.isUnchanged = function(reguser) {
-      return angular.equals(reguser, $scope.master);
-    };
-    
-    $scope.reset();
-    
 })
-.controller('LoginOutCtrl', function ($scope,VacService,Session,$location,AuthenticationService) {
+.controller('LoginOutCtrl', function ($scope,VacService,Session,$location) {
 	Session.destroy();
-	AuthenticationService.isAuthenticated =false;
-	AuthenticationService.isDoc =false;
 	$('#right-menu-toggle').addClass('hide');
 	$('#right-menu-toggle').popover('destroy');
 	$('.sidebar-nav li').removeClass('hide');

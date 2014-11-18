@@ -8,7 +8,7 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-.controller('VacHealthCtrl', function ($scope,VacService,AuthenticationService,Session,$location){
+.controller('VacHealthCtrl', function ($scope,VacService,Session,$location){
 	$scope.durations = [
 			{ name: "7 days", val: "7"},
 			{ name: "15 days", val: "15"},
