@@ -85,7 +85,10 @@ $routeProvider
 app.run(function($rootScope, $location, $window) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
     		//console.log(currentRoute,AuthenticationService,nextRoute);
-    		$('#wrapper').removeClass('toggled');
+    		//$('#wrapper').removeClass('toggled');
+    		if($('#sidebar-wrapper').css('display')==='block'){
+    			$("#sidebar-wrapper").animate({"left":"0px"}, "fast").hide('slow');
+    		}	
     	    if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication && !window.mstarUtil.isSignedIn) {
     	            $location.path("/login");
     	    }else if(nextRoute.templateUrl==='views/doctor.html'){
@@ -101,10 +104,18 @@ app.run(function($rootScope, $location, $window) {
     	    }
     });
 });
-$("#menu-toggle").click(function(e) {
+$(".mymenu").click(function(e) {
     e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
+    //$("#wrapper").toggleClass("toggled");
+    leftMenuHandler();
 });
+function leftMenuHandler(){
+	if($('#sidebar-wrapper').css('display')==='block'){
+		$("#sidebar-wrapper").animate({"left":"0px"}, "fast").hide('slow');
+	}else{
+		$("#sidebar-wrapper").animate({"left":"250px"}, "fast").show();
+	}
+}
 function showPopup(msg){
 	$(".modal-body").html(msg);
 	$(".al-modal-sm").modal('show');
@@ -126,7 +137,7 @@ window.mstarUtil = {
 	     if any of the top-level properties are not found in local storage, the function will
 	     instantiate them to a default value */
 	    loadLocalStorage: function () {
-	      var appStorage = localStorage.getItem('morningstar-app');
+	      var appStorage = localStorage.getItem('alertme-app');
 
 	      /*  if local storage obj exists, and is valid JSON, parse string into an object
 	       try/catch is used since JSON.parse will throw an error if string is not valid JSON */
@@ -170,7 +181,7 @@ window.mstarUtil = {
 	          ret = false;
 
 	      if (isObject(storageObj)) {
-	        localStorage.setItem('morningstar-app', objString);
+	        localStorage.setItem('alertme-app', objString);
 	        ret = true;
 	      }
 

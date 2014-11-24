@@ -79,33 +79,7 @@ body,html {
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-/*!
- * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
 
 /* Toggle Styles */
 
@@ -119,14 +93,14 @@ body,html {
 }
 
 #wrapper.toggled {
-	padding-left: 255px;
+	padding-left: 250px;
 }
 
 #sidebar-wrapper {
     z-index: 1000;
+    top : 35px;
     position: absolute;
-    left: 255px;
-    width: 0;
+    width: 250px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
@@ -135,6 +109,7 @@ body,html {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    display : none;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -253,7 +228,9 @@ body,html {
 	margin-left: 8px;
 	float: left;
 }
-
+.menutext { 
+	padding-left: 0px;
+}
 .mymenu span:after {
 	content: '';
 	position: absolute;
@@ -341,10 +318,11 @@ body,html {
 }
 .pr_title {
 	font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0.03em;
-    line-height: 22px;
-    color :#636363;
+	font-weight: bold;
+	letter-spacing: 0.03em;
+	line-height: 22px;
+	color: #636363;
+	text-align: right;
 }
 #ajaxloader
 {
@@ -428,3 +406,39 @@ body,html {
 .securityMobile {
 	-webkit-text-security : disc;
 }	
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 500px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+  #sidebar-wrapper {
+    z-index: 1000;
+    position: absolute;
+    top :0px;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #636363;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+   }
+}

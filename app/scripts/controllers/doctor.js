@@ -12,7 +12,6 @@ angular.module('avacDetailsApp')
 	$scope.master = {};
 	var handleDocSuccessCall = function (rowdata){
 		$scope.doctor = rowdata.data[0];
-		StateService.saveUserInfo($scope.doctor);
 	};
 	var handleDocUpdateSuccess = function (rowdata){
 		if(rowdata.status==1){
@@ -40,20 +39,15 @@ angular.module('avacDetailsApp')
     };
 
     $scope.isUnchanged = function(doctor) {
-      
       return angular.equals(doctor, $scope.master);
     };
     $scope.reset();
     if(Session.userId){
-	    $scope.mobile = Session.userId;
-	    if(!StateService.getUserInfo()){
-		    VacService.getDocDetails({
-		    	callback: handleDocSuccessCall,
-		    	mobile: '?mobile='+Session.userId
-			});
-	    }else{
-	    	$scope.doctor = StateService.getUserInfo();
-	    }
+    	$scope.mobile = Session.userId;
+    	VacService.getDocDetails({
+    		callback: handleDocSuccessCall,
+    		mobile: '?mobile='+Session.userId
+    	});
     }else{
     	$location.path('/login');
     }   
