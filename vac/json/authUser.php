@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors','1'); 
+//ini_set('display_errors','1'); 
 require("../includes/Db.class.php");
 require("../classes/Doctor.php");
 $mode		= $_REQUEST['mode'];
