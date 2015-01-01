@@ -68,15 +68,15 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: '10.90.210.238',
+        hostname: 'localhost',
         livereload: 35729
       },
       server: {
           proxies: [
             {
               context: '/vac',
-              host: 'msikwalhost',
-              port: 9009,
+              host: 'localhost',
+              port: 80,
               https: false,
               changeOrigin: true,
               xforward: false

@@ -19,7 +19,6 @@ angular.module('avacDetailsApp')
 			userRole = 'doctor';
 			$location.path('/doctor');
 		}else if(rowdata.status ==2){
-			AuthenticationService.isAuthenticated =true;
 			userRole = 'reguser';
 			$location.path('/user');
 		}else{
