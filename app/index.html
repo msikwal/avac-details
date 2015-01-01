@@ -38,17 +38,17 @@
   		</div>
   		
 		<div id="wrapper">
-			<div id="sidebar-wrapper">
+			<div id="sidebar-wrapper"  ng-controller="MenuCtrl" >
 				<ul class="sidebar-nav">
-					<!--li class="sidebar-brand"><a ng-href="#">Home</a></li>-->
-					<li class=''><a ng-href="#/">Login</a></li>
+					<li ng-repeat="menuElemets in menuArr" ng-show="menuElemets.disFlag" ><a ng-class="getClass('/{{menuElemets.pageLink}}')" ng-href="#/{{menuElemets.pageLink}}">{{menuElemets.pageName}}</a></li>
+					<!--li class=''><a ng-href="#/">Login</a></li>
 					<li class=''><a ng-href="#/register">Register</a></li>
 					<li class='hide'><a ng-href="#/doctor">Doctor</a></li>
 					<li class='hide'><a ng-href="#/user">User</a></li>
 					<li class=''><a ng-href="#/whyvac">Why Vaccinate?</a></li>
 					<li class=''><a ng-href="#/vacchart">Vaccination Chart</a></li>
 					<li class='hide'><a ng-href="#/dashboard">Dashboard</a></li>
-					<li class='hide'><a ng-href="#/logout">Logout</a></li>
+					<li class='hide'><a ng-href="#/logout">Logout</a></li-->
 				</ul>
 			</div>
 			
@@ -93,6 +93,7 @@
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/vac-service.js"></script>
+	<script src="scripts/controllers/menu.js"></script>
 	<script src="scripts/controllers/dashboard.js"></script>
 	<script src="scripts/controllers/user.js"></script>
 	<script src="scripts/controllers/doctor.js"></script>

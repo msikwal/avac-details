@@ -8,7 +8,7 @@
  * Controller of the avacDetailsApp
  */
 angular.module('avacDetailsApp')
-.controller('LoginCtrl', function ($scope,VacService,Session,$location,$cookies,StateService) {
+.controller('LoginCtrl', function ($scope,VacService,Session,$location,$cookies,StateService,$rootScope) {
 	
 	$scope.invalidDetails =false;
 	var handleSuccessCall = function (rowdata){
@@ -29,8 +29,27 @@ angular.module('avacDetailsApp')
 		StateService.setUserId($scope.master.mobile_num);
 		StateService.setToken(token);
 		StateService.setUserRole(userRole);
-		showRightPopoverMenu(userRole);
 		Session.create(token,$scope.master.mobile_num,userRole);
+		renderMenu(rowdata);
+	};
+	var renderMenu = function (rowdata){
+		var menuArrEle = [];
+		if(rowdata.status==1){
+			menuArrEle = ['doctor','child','pre-details','health-details','logout'];
+		}else if(rowdata.status ==2){
+			menuArrEle = ['user','child-vac-details','logout'];
+		}else{
+			menuArrEle = ['login','vacchart'];
+		}
+		var mainArr = $rootScope.menuArr;
+		for (var i = 0; i < mainArr.length; i++) {
+		    if($.inArray(mainArr[i].pageLink,menuArrEle) !== -1){
+		    	console.log(mainArr[i].pageLink);
+		    	mainArr[i].disFlag = true;
+		    }else{
+		    	mainArr[i].disFlag = false;
+		    }
+		}
 	};
 	var showRightPopoverMenu = function(user){
 		if(!user){
@@ -94,19 +113,22 @@ angular.module('avacDetailsApp')
         		 $cookies.user_mobile = user_mobile_no;
         	}
         }else{
-        	$cookies.user_mobile = "";
+        	$cookies.user_mobile = "-";
         }
     };
 })
-.controller('LoginOutCtrl', function ($scope,VacService,Session,$location) {
+.controller('LoginOutCtrl', function ($scope,VacService,Session,$location,$rootScope) {
 	Session.destroy();
-	$('#right-menu-toggle').addClass('hide');
-	$('#right-menu-toggle').popover('destroy');
-	$('.sidebar-nav li').removeClass('hide');
-	$('.sidebar-nav li').eq(2).addClass('hide');
-	$('.sidebar-nav li').eq(3).addClass('hide');
-	$('.sidebar-nav li').eq(6).addClass('hide');
-	$('.sidebar-nav li').eq(7).addClass('hide');
+	var menuArrEle = ['login','vacchart','whyvac'];
+	var mainArr = $rootScope.menuArr;
+	for (var i = 0; i < mainArr.length; i++) {
+	    if($.inArray(mainArr[i].pageLink,menuArrEle) !== -1){
+	    	console.log(mainArr[i].pageLink);
+	    	mainArr[i].disFlag = true;
+	    }else{
+	    	mainArr[i].disFlag = false;
+	    }
+	}
 	$location.path('/');
 });
 

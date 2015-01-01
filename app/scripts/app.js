@@ -8,9 +8,19 @@
  *
  * Main module of the application.
  */
-var app = angular.module('avacDetailsApp', ['ngRoute','ngAnimate','ngCookies','ngResource','ngRoute','ngSanitize','ngTouch','vacService','formatterService','stateService']);
-
-
+var app = angular.module('avacDetailsApp', [
+	'ngRoute',
+	'ngAnimate',
+	'ngCookies',
+	'ngResource',
+	'ngRoute',
+	'ngSanitize',
+	'ngTouch',
+	'vacService',
+	'formatterService',
+	'stateService'
+	]
+);
 app.config(function ($routeProvider) {
 $routeProvider
 	   .when('/', {
@@ -84,29 +94,16 @@ $routeProvider
 
 app.run(function($rootScope, $location, $window) {
     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
-    		//console.log(currentRoute,AuthenticationService,nextRoute);
-    		//$('#wrapper').removeClass('toggled');
     		if($('#sidebar-wrapper').css('display')==='block'){
     			$("#sidebar-wrapper").animate({"left":"0px"}, "fast").hide('slow');
     		}	
     	    if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication && !window.mstarUtil.isSignedIn) {
     	            $location.path("/login");
-    	    }else if(nextRoute.templateUrl==='views/doctor.html'){
-    	    	$('.sidebar-nav li').addClass('hide');
-    	    	$('.sidebar-nav li').eq(2).removeClass('hide');
-    	    	$('.sidebar-nav li').eq(6).removeClass('hide');
-    	    	$('.sidebar-nav li').eq(7).removeClass('hide');
-    	    }else if(nextRoute.templateUrl==='views/user.html'){
-    	    	$('.sidebar-nav li').addClass('hide');
-    	    	$('.sidebar-nav li').eq(3).removeClass('hide');
-    	    	$('.sidebar-nav li').eq(6).removeClass('hide');
-    	    	$('.sidebar-nav li').eq(7).removeClass('hide');
     	    }
     });
 });
 $(".mymenu").click(function(e) {
     e.preventDefault();
-    //$("#wrapper").toggleClass("toggled");
     leftMenuHandler();
 });
 function leftMenuHandler(){
@@ -153,8 +150,6 @@ window.mstarUtil = {
 	        appStorage = {};
 	      }
 
-	      /*  if app storage is missing articles, videos, quotes, login or fontSize, set properites to a default value */
-	     
 	      if (typeof appStorage.login !== 'object') {
 	        appStorage.login = {
 	          country: null,
