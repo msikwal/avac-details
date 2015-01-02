@@ -26,11 +26,16 @@ angular.module('avacDetailsApp')
         	   	'disFlag' : true
     	    },
     	    {
-  	     	   	'pageName':'Profile',
+  	     	   	'pageName':'My Profile',
   	     	   	'pageLink':'doctor',
   	     	   	'disFlag' : false
       		},
-         		{
+      		{
+	     	   	'pageName':'Register',
+	     	   	'pageLink':'register',
+	     	   	'disFlag' : false
+    		},
+         	{
           	   	'pageName':'Child Vaccination',
           	   	'pageLink':'child',
           	   	'disFlag' : false
@@ -46,7 +51,7 @@ angular.module('avacDetailsApp')
           	   	'disFlag' : false
       	    },
       	    {
-  	     	   	'pageName':'Profile',
+  	     	   	'pageName':'My Profile',
   	     	   	'pageLink':'user',
   	     	   	'disFlag' : false
       		},
