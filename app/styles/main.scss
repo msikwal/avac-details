@@ -11,11 +11,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 }
 p{
 	color: #151515;
-		font-weight: 300;
-		font-size: 1.125em;
-		line-height: 1.375em;
-		padding-bottom: 1em;
-		word-wrap: break-word;
+	font-weight: 300;
+	font-size: 1.125em;
+	line-height: 1.375em;
+	padding-bottom: 1em;
+	word-wrap: break-word;
 }
 /* Space out content a bit */
 body,html {
@@ -23,65 +23,34 @@ body,html {
   padding-bottom: 0.375em;
   overflow-x: hidden;
   overflow-y: scroll;
+  height: 100%;
 }
 ::-webkit-scrollbar { 
     display: none; 
 }
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
+a {
+  color: white;
+  text-decoration: none;
+}
+.headerFixed {
+	position: absolute;
+    height: 50px;
+    top: 0;
+    width: 100%;
+  	background-color: #29b6f6;
+	padding: 10px 0px 10px 0px;
+	z-index : 999;
+}
+
 .footer {
-  /*padding-left: 15px;
-  padding-right: 15px;*/
+	position: absolute;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+  	color: white;
+  	background-color: #ff9800;
+  	padding: 10px 0px 10px 10px;
 }
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  padding-bottom: 0.875em;
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 5px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-
-
-/* Toggle Styles */
 
 #wrapper {
     padding-left: 0;
@@ -89,7 +58,7 @@ body,html {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    padding-top:0.375em;
+    /*padding-top:0.375em;*/
 }
 
 #wrapper.toggled {
@@ -98,13 +67,13 @@ body,html {
 
 #sidebar-wrapper {
     z-index: 1000;
-    top : 35px;
+    top : 50px;
     position: absolute;
     width: 250px;
-    height: 100%;
+    height: 100% !important;
     margin-left: -250px;
     overflow-y: auto;
-    background: #636363;
+    background: white;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -117,6 +86,8 @@ body,html {
 }
 
 #page-content-wrapper {
+	margin-top: 50px;
+	margin-bottom: 50px;
     width: 100%;
     /*padding: 15px;
     border-top: 1px solid #e5e5e5;
@@ -148,17 +119,17 @@ body,html {
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #eaeaea;
+    color: #29b6f6;
 }
 .sidebar-nav li a.active {
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+    color: #ff9800;
+    /*background: rgba(255,255,255,0.2);*/
 }
 .sidebar-nav li a:hover,.sidebar-nav li a .active {
     text-decoration: none;
-    color: #eaeaea;
-    background: rgba(255,255,255,0.2);
+    color: #ff9800;
+    /*background: rgba(255,255,255,0.2);*/
 }
 
 .sidebar-nav li a:active,
@@ -180,33 +151,30 @@ body,html {
     color: #fff;
     background: none;
 }
-
-
 .page_title{
-	display: block;
     color: #636363;
     letter-spacing : 0.125em;
     font-size: 16px;
     padding-bottom:10px;
     padding-top:5px;
     font-weight:bold;
-    border-bottom: 1px solid #eaeaea;
-    border-top: 1px solid #eaeaea;
+    /*border-bottom: 5px solid #ff9800;*/
     margin-bottom:8px;
+    text-align: left;
 }
 .form-horizontal input.ng-invalid.ng-dirty {
-    background-color: #FA787E;
+   border-bottom: 2px solid #F44336;
   }
 
 .form-horizontal input.ng-valid.ng-dirty {
-    background-color: #78FA89;
+    border-bottom: 2px solid #66BB6A;
 }
 .form-horizontal textarea.ng-invalid.ng-dirty {
-    background-color: #FA787E;
-  }
+    background-color: #EF5350;
+}
 
 .form-horizontal textarea.ng-valid.ng-dirty {
-    background-color: #78FA89;
+    background-color: #A7FFEB;
 }
 .error  {
     margin-bottom : 0.875em;
@@ -274,7 +242,13 @@ body,html {
 	padding-left: 0.875em !important;
 	padding-right: 0.875em !important;
 }
-
+.m_header {
+	background-color: #29b6f6;
+	padding: 10px 0px 10px 10px;
+	position: absolute;
+    top: 0;
+    width: 100%;
+}
 
 .table tbody tr.vc_details td,
 .table tbody tr.vc_details th {
@@ -406,38 +380,12 @@ body,html {
 	-webkit-text-security : disc;
 }	
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 500px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-  #sidebar-wrapper {
-    z-index: 1000;
-    position: absolute;
-    top :0px;
-    width: 250px;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background: #636363;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-   }
+@media screen and (min-width: 992px) {
+  	.container {
+  		width : 65%;
+  	}
+  	#page-content-wrapper {
+		margin-top: 80px;
+		margin-bottom: 50px;
+	}	
 }

@@ -12,7 +12,7 @@
 				<th>End Date</th>
 			</tr>
 			<tr ng-repeat="(key1,val) in vacDetails track by $index" class="vc_details {{val.vac_status}}" >
-				<td><span class="vac_sr">{{val.vac_id}}</span></td>
+				<td><span class="vac_sr">{{$index}}</span></td>
 				<td><span class="vac_sr">{{val.child_name}}</span></td>
 				<td><span class="vc_name">{{val.vac_name}}</span></td>
 				<td><span class="vc_startdate">{{val.start_date | momentjs: 'Do MMM YYYY'}}</span></td>

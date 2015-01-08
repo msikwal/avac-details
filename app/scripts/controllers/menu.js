@@ -21,6 +21,11 @@ angular.module('avacDetailsApp')
         	   	'disFlag' : true
     	    },
     	    {
+        	   	'pageName':'Importance of Timing',
+        	   	'pageLink':'vactiming',
+        	   	'disFlag' : true
+    	    },
+    	    {
         	   	'pageName':'Why Vaccinate?',
         	   	'pageLink':'whyvac',
         	   	'disFlag' : true

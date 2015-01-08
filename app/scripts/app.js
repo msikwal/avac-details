@@ -24,11 +24,15 @@ var app = angular.module('avacDetailsApp', [
 app.config(function ($routeProvider) {
 $routeProvider
 	   .when('/', {
-		   templateUrl: 'views/user_launch.html',
-		   controller: 'LoginCtrl'
+		   templateUrl: 'views/why_vaccinate.html',
+		   access: { requiredAuthentication: false }
 	   })
 	   .when('/whyvac', {
 		    templateUrl: 'views/why_vaccinate.html',
+		    access: { requiredAuthentication: false }
+	   })
+	   .when('/vactiming', {
+		    templateUrl: 'views/imp_of_timing.html',
 		    access: { requiredAuthentication: false }
 	   })
 	   .when('/vacchart', {
