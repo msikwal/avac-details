@@ -48,18 +48,17 @@
 				  <li ng-repeat="menuElemets in menuArr" ng-show="menuElemets.disFlag" ><a ng-class="getClass('/{{menuElemets.pageLink}}')" ng-href="#/{{menuElemets.pageLink}}">{{menuElemets.pageName}}</a></li>
 				</ul>
 			</div>
-			<div class=" hidden-lg headerFixed">
+			<div class="hidden-lg headerFixed">
 					<div class="mymenu col-xs-2" id="menu-toggle"><span>&nbsp;</span></div>
 					<div class="col-xs-4 menutext" >Menu <img src='../images/logo_1.png' width ="26px" height="26px" style="" /></div>
 			</div>
 			<div id="page-content-wrapper"  >
 				<div class='msloader modal-backdrop fade in'><div class="msPosition"><div id="ajaxloader"></div></div></div>
-				
 				<div ng-view="" class="container"></div>
-				</div>	
+			</div>	
 		</div>
 		<footer class="footer ">
-			<div class="col-md-offset-4 col-lg-offset-4">Copyright © 2015 Alert 	Me. All rights reserved.</div>
+			<div class="col-md-offset-4 col-lg-offset-4">Copyright © 2015 Alert Me. All rights reserved.</div>
 		</footer>
 	</div>
 	
@@ -73,15 +72,6 @@
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/json3/lib/json3.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
 	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
 	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
 	<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>

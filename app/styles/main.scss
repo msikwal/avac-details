@@ -152,35 +152,53 @@ a {
     background: none;
 }
 .page_title{
-    color: #636363;
+    color: #ff9800;
     letter-spacing : 0.125em;
     font-size: 16px;
     padding-bottom:10px;
     padding-top:5px;
     font-weight:bold;
-    /*border-bottom: 5px solid #ff9800;*/
+    border-bottom: 1px solid #ff9800;
     margin-bottom:8px;
     text-align: left;
+    box-shadow: 0 5px 5px -5px #333;
+    -webkit-box-shadow: 0 5px 5px -5px #333;
+	-moz-box-shadow: 0 5px 5px -5px #333;
 }
 .form-horizontal input.ng-invalid.ng-dirty {
    border-bottom: 2px solid #F44336;
+   box-shadow: 0 5px 5px -5px #333;
+    -webkit-box-shadow: 0 5px 5px -5px #333;
+	-moz-box-shadow: 0 5px 5px -5px #333;
   }
 
 .form-horizontal input.ng-valid.ng-dirty {
     border-bottom: 2px solid #66BB6A;
+    box-shadow: 0 5px 5px -5px #333;
+    -webkit-box-shadow: 0 5px 5px -5px #333;
+	-moz-box-shadow: 0 5px 5px -5px #333;
 }
 .form-horizontal textarea.ng-invalid.ng-dirty {
     background-color: #EF5350;
+    box-shadow: 0 5px 5px -5px #333;
+    -webkit-box-shadow: 0 5px 5px -5px #333;
+	-moz-box-shadow: 0 5px 5px -5px #333;
 }
 
 .form-horizontal textarea.ng-valid.ng-dirty {
     background-color: #A7FFEB;
+    box-shadow: 0 5px 5px -5px #333;
+    -webkit-box-shadow: 0 5px 5px -5px #333;
+	-moz-box-shadow: 0 5px 5px -5px #333;
 }
 .error  {
     margin-bottom : 0.875em;
 }
 .marl5px { 
 	margin-left : 5px !important;
+}
+.marl15px { 
+	margin-left : 15px !important;
 }
 .sep5px { 
 	margin-bottom : 15px !important;
@@ -248,36 +266,28 @@ a {
 	position: absolute;
     top: 0;
     width: 100%;
+    z-index : 999;
 }
 
-.table tbody tr.vc_details td,
-.table tbody tr.vc_details th {
+.table tbody tr.vc_details td {
 	color: rgb(102,102,102);
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
-    
-    /* gutter */
     padding-right: 8px;
-    
-    /* allow content to be absolutely positioned, if needed */
     position: relative;
-    
-    /*border-bottom: 1px solid rgb(221, 221, 221);*/
     padding-top: 5px;
     vertical-align: top;
 }
+.table > thead > tr > th, .table > tbody > tr > th {
+	border-top: none !important;
+}
 .vc_details .vc_name {
  	display: block;
-    /* margin-top: 3px; */
-
-    /* font */
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.03em;
     line-height: 16px;
-
-    /* limit to one line with ellipsis when overflows */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -379,6 +389,11 @@ a {
 .securityMobile {
 	-webkit-text-security : disc;
 }	
+.well1 {
+	color : #ff9800;
+	background-color : transparent;
+	border : none;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 992px) {
   	.container {
