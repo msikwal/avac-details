@@ -66,11 +66,11 @@ a {
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
+    z-index: 1050;
     top : 50px;
     position: absolute;
     width: 250px;
-    height: 100% !important;
+    /*height: 100% !important;*/
     margin-left: -250px;
     overflow-y: auto;
     background: white;

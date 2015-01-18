@@ -132,6 +132,13 @@ function showPopup(msg){
 function isObject(obj) {
     return obj === Object(obj);
 };
+$( document ).ready(function() {
+	setHeightOfsideBar();
+});
+function setHeightOfsideBar(){
+	var tableHeight	= window.innerHeight - 100;
+	$("#sidebar-wrapper").css({"min-height": tableHeight });
+}
 (function () {
 window.mstarUtil = {
 	    /* session state and premium state access info */
