@@ -11,8 +11,13 @@ angular.module('avacDetailsApp')
   .controller('MenuCtrl', function ($scope,$rootScope,$location) {
 	  $rootScope.menuArr = [
             {
-	     	   	'pageName':'Login',
-	     	   	'pageLink':'login',
+	     	   	'pageName':'Home',
+	     	   	'pageLink':'home',
+	     	   	'disFlag' : true
+    		},
+    		{
+	     	   	'pageName':'About Us',
+	     	   	'pageLink':'knowmore',
 	     	   	'disFlag' : true
     		},
        		{
@@ -30,6 +35,11 @@ angular.module('avacDetailsApp')
         	   	'pageLink':'whyvac',
         	   	'disFlag' : true
     	    },
+    	    {
+	     	   	'pageName':'Login',
+	     	   	'pageLink':'login',
+	     	   	'disFlag' : true
+    		},
     	    {
   	     	   	'pageName':'My Profile',
   	     	   	'pageLink':'doctor',
