@@ -123,7 +123,7 @@ angular.module('avacDetailsApp')
 })
 .controller('LoginOutCtrl', function ($scope,VacService,Session,$location,$rootScope) {
 	Session.destroy();
-	var menuArrEle = ['login','vacchart','whyvac'];
+	var menuArrEle = ['home','knowmore','vacchart','vactiming','whyvac','login'];
 	var mainArr = $rootScope.menuArr;
 	for (var i = 0; i < mainArr.length; i++) {
 	    if($.inArray(mainArr[i].pageLink,menuArrEle) !== -1){

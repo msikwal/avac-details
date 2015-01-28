@@ -17,17 +17,15 @@ p{
 	padding-bottom: 1em;
 	word-wrap: break-word;
 }
-/* Space out content a bit */
 body,html {
-  /*padding-top: 0.375em;*/
   padding-bottom: 0.375em;
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
 }
-::-webkit-scrollbar { 
+/*::-webkit-scrollbar { 
     display: none; 
-}
+}*/
 a {
   color: white;
   text-decoration: none;
@@ -41,7 +39,10 @@ a {
 	padding: 10px 0px 10px 0px;
 	z-index : 999;
 }
-
+.readmore {
+	color: #ff9800;
+  	text-decoration: none;
+}
 .footer {
 	position: absolute;
     height: 50px;
@@ -58,7 +59,6 @@ a {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    /*padding-top:0.375em;*/
 }
 
 #wrapper.toggled {
@@ -394,6 +394,7 @@ a {
 	background-color : transparent;
 	border : none;
 }
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 992px) {
   	.container {
@@ -402,5 +403,11 @@ a {
   	#page-content-wrapper {
 		margin-top: 80px;
 		margin-bottom: 50px;
+	}	
+}
+@media (max-width: 767px) {
+	.jumbotron {
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}	
 }
