@@ -51,6 +51,6 @@ angular.module('avacDetailsApp')
    
     $scope.reset();
     $scope.max_date = moment().format('YYYY-MM-DD');
-    $scope.min_date  = moment(moment().subtract(20, 'years')._d).format('YYYY-MM-DD');
+    $scope.min_date  = moment(moment().subtract(2, 'years')._d).format('YYYY-MM-DD');
 });
 

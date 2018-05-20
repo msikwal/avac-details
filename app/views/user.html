@@ -3,6 +3,11 @@
 	<form class="form-horizontal" role="form" name="user_frm" id="user_frm">
 		<div class="form-group">
 			<div class="col-sm-12">
+				<input type="tel" value="{{mobile}}" pattern="[0-9]{10,10}" class="form-control " id="mobile_num" name="mobile_num" readonly="true" autocomplete="off"  maxlength="10" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-12">
 				<input type="text"  class="form-control" id="fName" ng-model="user.first_name" name="fName" placeholder="Enter First Name" required >
 			</div>
 		</div>
@@ -11,12 +16,7 @@
 				<input type="text"  class="form-control " id="lName" ng-model="user.last_name" name="lName" placeholder="Enter Last Name" required>
 			</div>
 		</div>
-		<!--<div class="form-group">
-					<label for="m_name" class="col-sm-4 control-label">Mobile</label>
-					<div class="col-sm-5">
-						<input type="tel" value="{{mobile}}" pattern="[0-9]{10,10}" class="form-control " id="mobile_num" name="mobile_num" placeholder="9833-0000-00" autocomplete="off"  maxlength="10" required>
-					</div>
-		</div> -->
+		
 		<div class="form-group">
 			<div class="col-sm-12">
 				<input type="email" value="" class="form-control " id="uEmail" ng-model="user.email" name="uEmail" placeholder="Enter Email" >

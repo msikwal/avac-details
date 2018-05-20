@@ -3,14 +3,10 @@
 	<table class="table table-hover">
 		<tr>
 			<th>Sr</th>
-			<th>Age</th>
-			<th>Disease</th>
 			<th>Vac name</th>
 		</tr>
 		<tr ng-repeat="vacChartDetails in vac_chart_details" class="vc_details" >
 			<td>{{$index+1}}</td>
-			<td>{{vacChartDetails.child_age}}</td>
-			<td>{{vacChartDetails.disease}}</td>
 			<td>{{vacChartDetails.vac_name}}</td>
 		</tr>
 	</table>
