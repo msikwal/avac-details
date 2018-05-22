@@ -9,8 +9,11 @@
  */
 angular.module('avacDetailsApp')
 .controller('UserCtrl', function ($scope,VacService,Session,$location) {
+	$scope.user = {};
 	var handleSuccessCall = function (rowdata){
-		$scope.user = rowdata.data[0];
+		if(rowdata && rowdata.data){
+			$scope.user = rowdata.data[0];
+		}	
 		Session.setCurrentUser($scope.user);
 	};
 	var handleUpdateSuccessCall = function (rowdata){
@@ -44,6 +47,7 @@ angular.module('avacDetailsApp')
       return angular.equals(user, $scope.master);
     };
     if(Session.userId){
+    	$scope.user.user_id = Session.userId;
 	    $scope.mobile = Session.userId;
 	    VacService.getUserDetails({
 			callback: handleSuccessCall,
@@ -51,6 +55,7 @@ angular.module('avacDetailsApp')
 		});
     }else{
     	$location.path('/login');
-    }   
+    }
+    
     $scope.reset();
 });

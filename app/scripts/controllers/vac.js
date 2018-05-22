@@ -39,4 +39,49 @@ angular.module('avacDetailsApp')
 		},
 		mobile:'?mode=vacChart'
 	});
+}).controller('DemoCtrl', function ($scope,VacService,Session,$location){
+	$scope.reset = function() {
+    	$scope.doctor = {};
+    };
+	var handleSuccessCall = function (rowdata){
+		//console.log("rowdata==========",rowdata);
+		if(rowdata.status==1){
+			showPopup("Message Send Successfully.");
+		}else if(rowdata.status==2){
+			showPopup("<span class='danger'>Record Already Added!!.</span>");
+		}else{
+			showPopup("Error Occoured!!");
+		}
+		$scope.reset();
+		$scope.c_frm.$setPristine();
+	}; 
+	var handleFailCall = function (rowdata){
+		showPopup("Please try after sometime!!");
+	};
+
+	$scope.sendMsg = function(doctor) {
+      if(Session.userId){
+    	  doctor.userId = Session.userId;
+    	  $scope.master = angular.copy(doctor);
+
+    	  	console.log($scope.master);
+
+    	  VacService.sendDemoMessage({ 
+				success: handleSuccessCall,
+				fail : handleFailCall,
+				action : 'save_tmp_data',
+				data : $scope.master,
+				method : 'POST'
+	  	});
+      }else{
+    	  $location.path('/login');
+      }	  
+    };
+    
+
+    $scope.isUnchanged = function(doctor) {
+      return angular.equals(doctor, $scope.master);
+    };
+   
+    $scope.reset();
 });

@@ -22,8 +22,8 @@ angular.module('avacDetailsApp')
 			userRole = 'reguser';
 			$location.path('/user');
 		}else if(rowdata.status==3){
-			userRole = 'admindoc';
-			$location.path('/doctor');
+			userRole = 'admin';
+			$location.path('/register');
 		}else{
 			$scope.invalidDetails = true;
 			showPopup("Invalid Credentials!");
@@ -42,7 +42,7 @@ angular.module('avacDetailsApp')
 		}else if(rowdata.status ==2){
 			menuArrEle = ['user','child-vac-details','logout'];
 		}else if(rowdata.status==3){
-			menuArrEle = ['doctor','child','pre-details','health-details','register','logout'];
+			menuArrEle = ['user','child','pre-details','health-details','register','demo','logout'];
 		}else{
 			menuArrEle = ['login','vacchart'];
 		}

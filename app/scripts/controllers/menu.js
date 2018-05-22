@@ -49,7 +49,7 @@ angular.module('avacDetailsApp')
 	     	   	'pageName':'Register',
 	     	   	'pageLink':'register',
 	     	   	'disFlag' : false
-    		},
+    		  },
          	{
           	   	'pageName':'Child Vaccination',
           	   	'pageLink':'child',
@@ -70,6 +70,11 @@ angular.module('avacDetailsApp')
   	     	   	'pageLink':'user',
   	     	   	'disFlag' : false
       		},
+          {
+              'pageName':'User Demo',
+              'pageLink':'demo',
+              'disFlag' : false
+          },
          		{
           	   	'pageName':'Vaccination Info',
           	   	'pageLink':'child-vac-details',

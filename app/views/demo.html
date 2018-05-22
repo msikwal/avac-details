@@ -1,0 +1,41 @@
+<div class="js_doc_details col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3" >
+	<div class="page_title ">Demo Information</div>
+		<form class="form-horizontal" role="form" method="post" action="" name="c_frm" id="c_frm" novalidate>
+		<div class="form-group">
+			<div class="col-sm-12">
+				<input type="text" class="form-control" id="f_name" ng-model="doctor.first_name" name="f_name" placeholder="Enter First Name" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-12">
+				<input type="text" class="form-control "
+					id="l_name"  ng-model="doctor.last_name" name="l_name" placeholder="Enter Last Name" required>
+			</div>
+		</div>
+		<div class="form-group ">
+			<div class="col-sm-12">
+				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control securityMobile" id="mobileNum" name="mobileNum" placeholder="Mobile Number" autocomplete="off" ng-maxlength="10" required ng-model="doctor.mobile_num">
+			</div>
+		</div>
+		<div class="form-group " ng-show="(!!doctor.mobile_num)">
+			<div class="col-sm-12">
+				<input type="tel" ng-Pattern="/[0-9]{10,10}/" class="form-control "  ng-disabled="!(!!doctor.mobile_num)" id="ReMobileNum" name="ReMobileNum" placeholder="Confirm Mobile Number" autocomplete="off" ng-maxlength="10" required ng-model="doctor.re_mobile_num">
+				<div ng-show="(doc_frm.mobileNum.$dirty && doc_frm.ReMobileNum.$dirty) && (doctor.mobile_num != doctor.re_mobile_num)">
+			        <span class="text-danger error ">Mobile Number mismatched</span>
+			    </div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-12">
+				<textarea class="form-control " id="wel_msg" name="wel_msg" cols="3" placeholder="Enter text message"
+					rows="2" ng-model="doctor.text_msg" required></textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="js-submit-btn col-sm-12 ">
+    			<button ng-click="sendMsg(doctor)" ng-disabled="doc_frm.$invalid || isUnchanged(doctor)" class="btn btn-primary btn-block ">SEND MESSAGE</button>
+			</div>
+		</div>
+	</form>
+</div>

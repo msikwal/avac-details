@@ -99,6 +99,11 @@ $routeProvider
 		   controller: 'VacHealthCtrl',
 		   access: { requiredAuthentication: true }
 	   })
+	   .when('/demo', {
+		   templateUrl: 'views/demo.html',
+		   controller: 'DemoCtrl',
+		   access: { requiredAuthentication: true }
+	   })
 	   .otherwise({
 		   redirectTo: '/'
 		   });
