@@ -42,7 +42,7 @@ angular.module('avacDetailsApp')
       return angular.equals(doctor, $scope.master);
     };
     $scope.reset();
-    if(Session.userId && Session.userRole=="doctor"){
+    if(Session.userId){
     	$scope.mobile = Session.userId;
     	VacService.getDocDetails({
     		callback: handleDocSuccessCall,

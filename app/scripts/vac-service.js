@@ -36,7 +36,8 @@ angular.module('vacService', [])
 			doctor: '/vac/json/doctor.php',
 			child: '/vac/json/child.php',
 			pregenancy: '/vac/json/pregenancy.php',
-			health: '/vac/json/health.php'
+			health: '/vac/json/health.php',
+			demo: '/vac/json/demo.php'
 	},
 	isNetworkError = function (statusCode) {
 		return (typeof statusCode !== 'number' || statusCode < 200 || statusCode === 402 || statusCode > 404);

@@ -17,7 +17,10 @@ angular.module('avacDetailsApp')
 	$scope.master = {};
 	var handleSuccessCall = function (rowdata){
 		if(rowdata.status==1){
-			$location.path('/login');
+			//$location.path('/login');
+			showPopup("Registration Done!!");
+			$scope.reset();
+    		$scope.reg_frm.$setPristine();
 		}else{
 			console.log(rowdata);
 		}

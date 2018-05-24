@@ -96,6 +96,9 @@ angular.module('stateService', [])
         setUserRole: function (val) {
             setLogin('userRole', val);
         },
+        setUserType: function (val) {
+            setLogin('userType', val);
+        },
         setUserId: function (val) {
           setLogin('userId', val);
         },
