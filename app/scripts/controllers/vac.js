@@ -39,9 +39,29 @@ angular.module('avacDetailsApp')
 		},
 		mobile:'?mode=vacChart'
 	});
-}).controller('DemoCtrl', function ($scope,VacService,Session,$location){
+}).controller('DemoCtrl', function ($scope,VacService,Session,$location,$interpolate){
 	$scope.reset = function() {
-    	$scope.doctor = {};
+		//$scope.templateMsg = "Hi this is a reminder that you have an appointment on {{today}}. Thanks Dr. {{frist_name}} {{last_name}} from {{hospital_name}}.";
+		$scope.templateMsg = "हॅलो सर / मॅडम, हे एक स्मरणपत्र आहे की 27 मे, 2018 रोजी तुम्हाला डॉक्टरांबरोबर भेट आहे.धन्यवाद, Dr.{{frist_name}} {{last_name}}"
+		//$scope.templateMsg = "Hello Sir/Madam, this is a reminder you have a appointment with Dr.{{frist_name}} {{last_name}}  on {{today}}. Thanks Dr. {{last_name}} from {{hospital_name}}";
+    	$scope.doctor = {
+    		text_msg : $scope.templateMsg
+    	};
+    	$scope.updateMsgTemplate();
+    };
+    $scope.updateMsgTemplate = function(event){
+    	var fName = $scope.doctor.first_name || '........';
+    	var lName = $scope.doctor.last_name || '........';
+
+		var tempObj = {
+			frist_name : fName,
+			last_name : lName || '',
+			today : moment().format('DD MMM YYYY'),
+			hospital_name : lName + '  Hospital'
+		}
+		var textMsg =	$scope.templateMsg;
+		var message  = $interpolate(textMsg)(tempObj);
+		$scope.doctor.text_msg = message;
     };
 	var handleSuccessCall = function (rowdata){
 		//console.log("rowdata==========",rowdata);
